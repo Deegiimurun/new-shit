@@ -1,10 +1,5 @@
-// ** React Imports
 import { ReactNode, useState } from 'react'
-
-// ** Next Import
 import Link from 'next/link'
-
-// ** MUI Components
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Checkbox from '@mui/material/Checkbox'
@@ -19,17 +14,9 @@ import { styled, useTheme } from '@mui/material/styles'
 import InputAdornment from '@mui/material/InputAdornment'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Typography, { TypographyProps } from '@mui/material/Typography'
-
-// ** Icon Imports
 import Icon from 'src/@core/components/icon'
-
-// ** Configs
 import themeConfig from 'src/configs/themeConfig'
-
-// ** Layout Import
 import BlankLayout from 'src/@core/layouts/BlankLayout'
-
-// ** Hooks
 import { useSettings } from 'src/@core/hooks/useSettings'
 import {Controller, useForm} from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -114,12 +101,11 @@ const Register = () => {
     auth.login({ email, password }, () => {
       setError('email', {
         type: 'manual',
-        message: 'Email or Password is invalid'
+        message: 'Имэйл эсвэл нууц үгээ дахин шалгана уу.'
       })
     })
   }
 
-  // ** Vars
   const { skin } = settings
 
   const imageSource = skin === 'bordered' ? 'auth-v2-register-illustration-bordered' : 'auth-v2-register-illustration'
