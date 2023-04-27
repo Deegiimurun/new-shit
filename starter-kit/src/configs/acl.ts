@@ -21,8 +21,12 @@ const defineRulesFor = (role: string, subject: string) => {
 
   if (role === 'admin') {
     can('manage', 'all')
+  } else if (role === 'doctor') {
+    can(['read'], 'doctor')
   } else if (role === 'client') {
-    can(['read'], 'nurse-page')
+    can(['read'], 'client')
+  } else if (role === 'nurse') {
+    can(['read'], 'nurse')
   } else {
     can(['read', 'create', 'update', 'delete'], subject)
   }
