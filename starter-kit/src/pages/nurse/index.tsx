@@ -12,7 +12,6 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
 const ACLPage = () => {
-  // ** Hooks
   const ability = useContext(AbilityContext)
 
   return (
@@ -43,7 +42,7 @@ const ACLPage = () => {
 
 ACLPage.acl = {
   action: 'read',
-  subject: 'acl-page'
+  subject: 'nurse-page'
 }
 
 export default ACLPage

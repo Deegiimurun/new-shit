@@ -36,9 +36,9 @@ const AuthProvider = ({children}: Props) => {
           setUser(session.data.session.user)
         } else {
           setUser(null);
-          setLoading(false);
           await router.replace('/login')
         }
+        setLoading(false);
       }
 
       initAuth()

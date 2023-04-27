@@ -173,7 +173,7 @@ const LoginPage = () => {
         >
           <BoxWrapper>
             <Box sx={{ mb: 6 }}>
-              <TypographyStyled variant='h5'>{themeConfig.templateName}д тавтай морил! 👋🏻</TypographyStyled>
+              <TypographyStyled variant='h5'>{themeConfig.appName}д тавтай морил! 👋🏻</TypographyStyled>
               <Typography variant='body2'>Өөрийн нэр дээр бүртгэлтэй хаягаар нэвтэрч орно уу</Typography>
             </Box>
             <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>

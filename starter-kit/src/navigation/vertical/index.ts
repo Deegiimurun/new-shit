@@ -5,8 +5,8 @@ const navigation = (): VerticalNavItemsType => {
   return [
     {
       title: 'Home',
-      path: '/home',
-      icon: 'mdi:home-outline',
+      path: '/doctor',
+      icon: 'mdi:doctor-outline',
     },
     {
       title: 'Second Page',
@@ -14,9 +14,9 @@ const navigation = (): VerticalNavItemsType => {
       icon: 'mdi:email-outline',
     },
     {
-      path: '/acl',
+      path: '/nurse',
       action: 'read',
-      subject: 'acl-page',
+      subject: 'nurse-page',
       title: 'Access Control',
       icon: 'mdi:shield-outline',
     }

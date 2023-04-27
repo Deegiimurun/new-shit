@@ -4,8 +4,8 @@ import { HorizontalNavItemsType } from 'src/@core/layouts/types'
 const navigation = (): HorizontalNavItemsType => [
   {
     title: 'Home',
-    path: '/home',
-    icon: 'mdi:home-outline',
+    path: '/doctor',
+    icon: 'mdi:doctor-outline',
   },
   {
     title: 'Second Page',
@@ -13,9 +13,9 @@ const navigation = (): HorizontalNavItemsType => [
     icon: 'mdi:email-outline',
   },
   {
-    path: '/acl',
+    path: '/nurse',
     action: 'read',
-    subject: 'acl-page',
+    subject: 'nurse-page',
     title: 'Access Control',
     icon: 'mdi:shield-outline',
   }
