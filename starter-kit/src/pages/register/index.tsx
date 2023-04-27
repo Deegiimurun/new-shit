@@ -32,7 +32,7 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 // ** Hooks
 import { useSettings } from 'src/@core/hooks/useSettings'
 import {Controller, useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
+import { yupResolver } from '@hookform/resolvers/yup'
 import {useAuth} from "../../hooks/useAuth";
 import * as yup from "yup";
 
@@ -84,6 +84,11 @@ const schema = yup.object().shape({
   password: yup.string().min(5).required()
 })
 
+interface FormData {
+  email: string
+  password: string
+}
+
 const Register = () => {
   // ** States
   const [showPassword, setShowPassword] = useState<boolean>(false)
@@ -106,7 +111,7 @@ const Register = () => {
 
   const onSubmit = (data: FormData) => {
     const { email, password } = data
-    auth.login({ email, password, rememberMe }, () => {
+    auth.login({ email, password }, () => {
       setError('email', {
         type: 'manual',
         message: 'Email or Password is invalid'
@@ -230,6 +235,7 @@ const Register = () => {
               <Typography variant='body2'>Make your app management easy and fun!</Typography>
             </Box>
             <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+              <FormControl fullWidth sx={{ mb: 4 }}>
               <Controller
                 name='email'
                 control={control}
@@ -242,10 +248,10 @@ const Register = () => {
                     onBlur={onBlur}
                     onChange={onChange}
                     error={Boolean(errors.email)}
-                    placeholder='admin@materio.com'
+                    placeholder='stud@num.mn'
                   />
-                )}
-              />
+                )}/>
+              </FormControl>
               <FormControl fullWidth>
                 <InputLabel htmlFor='auth-login-v2-password'>Password</InputLabel>
                 <Controller

@@ -183,7 +183,7 @@ const LoginPage = () => {
                       onBlur={onBlur}
                       onChange={onChange}
                       error={Boolean(errors.email)}
-                      placeholder='admin@materio.com'
+                      placeholder='doc@num.mn'
                     />
                   )}
                 />
