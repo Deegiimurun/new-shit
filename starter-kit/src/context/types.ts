@@ -1,4 +1,6 @@
-export type ErrCallbackType = (err: { [key: string]: string }) => void
+import {AuthError, User} from "@supabase/supabase-js";
+
+export type ErrCallbackType = (err: AuthError) => void
 
 export type LoginParams = {
   email: string
@@ -19,8 +21,8 @@ export type UserDataType = {
 export type AuthValuesType = {
   loading: boolean
   logout: () => void
-  user: UserDataType | null
+  user: User | null
   setLoading: (value: boolean) => void
-  setUser: (value: UserDataType | null) => void
+  setUser: (value: User | null) => void
   login: (params: LoginParams, errorCallback?: ErrCallbackType) => void
 }

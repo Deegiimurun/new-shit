@@ -156,7 +156,7 @@ const VerticalNavHeader = (props: Props) => {
             </g>
           </svg>
           <HeaderTitle variant='h6' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 3 }) }}>
-            {themeConfig.templateName}
+            {themeConfig.appName}
           </HeaderTitle>
         </LinkStyled>
       )}

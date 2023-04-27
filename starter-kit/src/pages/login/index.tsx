@@ -251,11 +251,11 @@ const LoginPage = () => {
                   fontSize: '1.5rem !important'
                 }}
               >
-                {themeConfig.templateName}
+                {themeConfig.appName}
               </Typography>
             </Box>
             <Box sx={{ mb: 6 }}>
-              <TypographyStyled variant='h5'>Welcome to {themeConfig.templateName}! 👋🏻</TypographyStyled>
+              <TypographyStyled variant='h5'>Welcome to {themeConfig.appName}! 👋🏻</TypographyStyled>
               <Typography variant='body2'>Please sign-in to your account and start the adventure</Typography>
             </Box>
             <Alert icon={false} sx={{ py: 3, mb: 6, ...bgColors.primaryLight, '& .MuiAlert-message': { p: 0 } }}>

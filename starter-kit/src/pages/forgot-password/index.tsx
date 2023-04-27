@@ -190,7 +190,7 @@ const ForgotPassword = () => {
                   fontSize: '1.5rem !important'
                 }}
               >
-                {themeConfig.templateName}
+                {themeConfig.appName}
               </Typography>
             </Box>
             <Box sx={{ mb: 6 }}>

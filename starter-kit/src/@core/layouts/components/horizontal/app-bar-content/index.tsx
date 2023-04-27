@@ -108,7 +108,7 @@ const AppBarContent = (props: Props) => {
               textTransform: 'uppercase'
             }}
           >
-            {themeConfig.templateName}
+            {themeConfig.appName}
           </Typography>
         </LinkStyled>
       )}

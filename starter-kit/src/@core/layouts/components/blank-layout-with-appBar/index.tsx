@@ -112,7 +112,7 @@ const BlankLayoutAppBar = () => {
               textTransform: 'uppercase'
             }}
           >
-            {themeConfig.templateName}
+            {themeConfig.appName}
           </Typography>
         </LinkStyled>
       </Toolbar>
