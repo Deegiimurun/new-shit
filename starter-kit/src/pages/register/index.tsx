@@ -31,6 +31,10 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Hooks
 import { useSettings } from 'src/@core/hooks/useSettings'
+import {Controller, useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
+import {useAuth} from "../../hooks/useAuth";
+import * as yup from "yup";
 
 // ** Styled Components
 const RegisterIllustrationWrapper = styled(Box)<BoxProps>(({ theme }) => ({
@@ -45,15 +49,6 @@ const RegisterIllustration = styled('img')(({ theme }) => ({
   maxWidth: '46rem',
   [theme.breakpoints.down('lg')]: {
     maxWidth: '35rem'
-  }
-}))
-
-const TreeIllustration = styled('img')(({ theme }) => ({
-  bottom: 0,
-  left: '1.875rem',
-  position: 'absolute',
-  [theme.breakpoints.down('lg')]: {
-    left: 0
   }
 }))
 
@@ -84,6 +79,11 @@ const LinkStyled = styled(Link)(({ theme }) => ({
   color: theme.palette.primary.main
 }))
 
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(5).required()
+})
+
 const Register = () => {
   // ** States
   const [showPassword, setShowPassword] = useState<boolean>(false)
@@ -92,6 +92,27 @@ const Register = () => {
   const theme = useTheme()
   const { settings } = useSettings()
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
+  const auth = useAuth()
+
+  const {
+    control,
+    setError,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    mode: 'onBlur',
+    resolver: yupResolver(schema)
+  })
+
+  const onSubmit = (data: FormData) => {
+    const { email, password } = data
+    auth.login({ email, password, rememberMe }, () => {
+      setError('email', {
+        type: 'manual',
+        message: 'Email or Password is invalid'
+      })
+    })
+  }
 
   // ** Vars
   const { skin } = settings
@@ -208,26 +229,51 @@ const Register = () => {
               <TypographyStyled variant='h5'>Adventure starts here 🚀</TypographyStyled>
               <Typography variant='body2'>Make your app management easy and fun!</Typography>
             </Box>
-            <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
-              <TextField autoFocus fullWidth sx={{ mb: 4 }} label='Username' placeholder='johndoe' />
-              <TextField fullWidth label='Email' sx={{ mb: 4 }} placeholder='user@email.com' />
+            <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+              <Controller
+                name='email'
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <TextField
+                    autoFocus
+                    label='И-мэйл хаяг'
+                    value={value}
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    error={Boolean(errors.email)}
+                    placeholder='admin@materio.com'
+                  />
+                )}
+              />
               <FormControl fullWidth>
                 <InputLabel htmlFor='auth-login-v2-password'>Password</InputLabel>
-                <OutlinedInput
-                  label='Password'
-                  id='auth-login-v2-password'
-                  type={showPassword ? 'text' : 'password'}
-                  endAdornment={
-                    <InputAdornment position='end'>
-                      <IconButton
-                        edge='end'
-                        onMouseDown={e => e.preventDefault()}
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
-                      </IconButton>
-                    </InputAdornment>
-                  }
+                <Controller
+                  name='password'
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange, onBlur } }) => (
+                    <OutlinedInput
+                      value={value}
+                      onBlur={onBlur}
+                      label='Нууц үг'
+                      onChange={onChange}
+                      id='auth-login-v2-password'
+                      error={Boolean(errors.password)}
+                      type={showPassword ? 'text' : 'password'}
+                      endAdornment={
+                        <InputAdornment position='end'>
+                          <IconButton
+                            edge='end'
+                            onMouseDown={e => e.preventDefault()}
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} fontSize={20} />
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                  )}
                 />
               </FormControl>
               <FormControlLabel

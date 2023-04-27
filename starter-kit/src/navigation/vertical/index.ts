@@ -7,6 +7,7 @@ const navigation = (): VerticalNavItemsType => {
       title: 'Home',
       path: '/doctor',
       icon: 'mdi:doctor-outline',
+
     },
     {
       title: 'Second Page',
@@ -15,8 +16,6 @@ const navigation = (): VerticalNavItemsType => {
     },
     {
       path: '/nurse',
-      action: 'read',
-      subject: 'nurse-page',
       title: 'Access Control',
       icon: 'mdi:shield-outline',
     }

@@ -21,11 +21,12 @@ const GuestGuard = (props: GuestGuardProps) => {
     if (!router.isReady) {
       return
     }
+    if (auth.loading) return;
 
     if (auth.user) {
       router.push('/')
     }
-  }, [auth.user, router])
+  }, [auth.loading, auth.user, router])
 
   if (auth.loading || (!auth.loading && auth.user !== null)) {
     return fallback
