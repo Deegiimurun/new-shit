@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState, SyntheticEvent, Fragment, ReactNode } from 'react'
+import { useState, SyntheticEvent, , ReactNode } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -161,7 +161,7 @@ const NotificationDropdown = (props: Props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <IconButton color='inherit' aria-haspopup='true' onClick={handleDropdownOpen} aria-controls='customized-menu'>
         <Badge
           color='error'
@@ -230,7 +230,7 @@ const NotificationDropdown = (props: Props) => {
           </Button>
         </MenuItem>
       </Menu>
-    </Fragment>
+    </>
   )
 }
 

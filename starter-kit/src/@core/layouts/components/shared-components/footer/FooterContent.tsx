@@ -21,10 +21,9 @@ const FooterContent = () => {
     <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
       {hidden ? null : (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', '& :not(:last-child)': { mr: 4 } }}>
-          <LinkStyled target='_blank' href=''>
+          <LinkStyled target='_blank' href='#'>
             Холбоо барих
           </LinkStyled>
-         
         </Box>
       )}
     </Box>

@@ -64,7 +64,6 @@ const Guard = ({ children, authGuard, guestGuard }: GuardProps) => {
   }
 }
 
-// ** Configure JSS & ClassName
 const App = (props: ExtendedAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
   const [supabaseClient] = useState(() => createBrowserSupabaseClient());
@@ -87,10 +86,7 @@ const App = (props: ExtendedAppProps) => {
       <CacheProvider value={emotionCache}>
         <Head>
           <title>{`${themeConfig.appName}`}</title>
-          <meta
-            name='description'
-            content={`${themeConfig.appName}`}
-          />
+          <meta name='description' content={`${themeConfig.appName}`}/>
           <meta name='keywords' content='National University of Mongolia medical appointment system' />
           <meta name='viewport' content='initial-scale=1, width=device-width' />
         </Head>

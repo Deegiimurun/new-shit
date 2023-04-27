@@ -1,11 +1,6 @@
-// ** React Imports
-import { ElementType, Fragment } from 'react'
-
-// ** Next Imports
+import {ElementType, Fragment,} from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-// ** MUI Imports
 import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import List from '@mui/material/List'
@@ -13,23 +8,12 @@ import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import MuiListItem, { ListItemProps } from '@mui/material/ListItem'
-
-// ** Third Party Imports
 import clsx from 'clsx'
-
-// ** Theme Config Import
 import themeConfig from 'src/configs/themeConfig'
-
-// ** Types
 import { NavLink } from 'src/@core/layouts/types'
 import { Settings } from 'src/@core/context/settingsContext'
-
-// ** Custom Components Imports
 import UserIcon from 'src/layouts/components/UserIcon'
 import Translations from 'src/layouts/components/Translations'
-import CanViewNavLink from 'src/layouts/components/acl/CanViewNavLink'
-
-// ** Util Imports
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 import { handleURLQueries } from 'src/@core/layouts/utils'
 
@@ -71,7 +55,7 @@ const HorizontalNavLink = (props: Props) => {
 
   const icon = item.icon ? item.icon : navSubItemIcon
 
-  const Wrapper = !hasParent ? List : Fragment
+  const Wrapper = !hasParent ? List : Fragment;
 
   const isNavLinkActive = () => {
     if (router.pathname === item.path || handleURLQueries(router, item.path)) {
@@ -82,7 +66,6 @@ const HorizontalNavLink = (props: Props) => {
   }
 
   return (
-    <CanViewNavLink navLink={item}>
       <Wrapper {...(!hasParent ? { component: 'div', sx: { py: settings.skin === 'bordered' ? 2.625 : 2.75 } } : {})}>
         <ListItem
           component={Link}
@@ -144,7 +127,6 @@ const HorizontalNavLink = (props: Props) => {
           </Box>
         </ListItem>
       </Wrapper>
-    </CanViewNavLink>
   )
 }
 

@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState, SyntheticEvent, Fragment, ReactNode } from 'react'
+import { useState, SyntheticEvent, , ReactNode } from 'react'
 
 // ** Next Import
 import Link from 'next/link'
@@ -99,7 +99,7 @@ const ShortcutsDropdown = (props: Props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <IconButton color='inherit' aria-haspopup='true' onClick={handleDropdownOpen} aria-controls='customized-menu'>
         <Icon icon='mdi:view-grid-outline' />
       </IconButton>
@@ -170,7 +170,7 @@ const ShortcutsDropdown = (props: Props) => {
           </Grid>
         </ScrollWrapper>
       </Menu>
-    </Fragment>
+    </>
   )
 }
 

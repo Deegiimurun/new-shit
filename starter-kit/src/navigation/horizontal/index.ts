@@ -14,8 +14,6 @@ const navigation = (): HorizontalNavItemsType => [
   },
   {
     path: '/nurse',
-    action: 'read',
-    subject: 'nurse-page',
     title: 'Access Control',
     icon: 'mdi:shield-outline',
   }

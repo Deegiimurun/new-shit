@@ -63,9 +63,10 @@ const AuthProvider = ({children}: Props) => {
     await router.replace(redirectURL as string)
   }
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     setUser(null)
-    router.push('/login')
+    await supabase.auth.signOut()
+    await router.push('/login')
   }
 
   const values = {

@@ -1,16 +1,10 @@
-// ** MUI Imports
 import Divider from '@mui/material/Divider'
 import { styled } from '@mui/material/styles'
 import Typography, { TypographyProps } from '@mui/material/Typography'
 import MuiListSubheader, { ListSubheaderProps } from '@mui/material/ListSubheader'
-
-// ** Types
 import { NavSectionTitle } from 'src/@core/layouts/types'
 import { Settings } from 'src/@core/context/settingsContext'
-
-// ** Custom Components Imports
 import Translations from 'src/layouts/components/Translations'
-import CanViewNavSectionTitle from 'src/layouts/components/acl/CanViewNavSectionTitle'
 
 interface Props {
   navHover: boolean
@@ -48,7 +42,6 @@ const VerticalNavSectionTitle = (props: Props) => {
   const { navCollapsed } = settings
 
   return (
-    <CanViewNavSectionTitle navTitle={item}>
       <ListSubheader
         className='nav-section-title'
         sx={{
@@ -86,7 +79,6 @@ const VerticalNavSectionTitle = (props: Props) => {
           )}
         </Divider>
       </ListSubheader>
-    </CanViewNavSectionTitle>
   )
 }
 

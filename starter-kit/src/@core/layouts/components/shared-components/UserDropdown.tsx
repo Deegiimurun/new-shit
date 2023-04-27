@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState, SyntheticEvent, Fragment } from 'react'
+import { useState, SyntheticEvent,  } from 'react'
 
 // ** Next Import
 import { useRouter } from 'next/router'
@@ -82,7 +82,7 @@ const UserDropdown = (props: Props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Badge
         overlap='circular'
         onClick={handleDropdownOpen}
@@ -175,7 +175,7 @@ const UserDropdown = (props: Props) => {
           Logout
         </MenuItem>
       </Menu>
-    </Fragment>
+    </>
   )
 }
 
