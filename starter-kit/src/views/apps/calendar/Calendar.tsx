@@ -8,11 +8,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import bootstrap5Plugin from '@fullcalendar/bootstrap5'
 import interactionPlugin from '@fullcalendar/interaction'
-
-// ** Types
 import { CalendarType } from 'src/types/apps/calendarTypes'
-
-// ** Third Party Style Import
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const blankEvent = {

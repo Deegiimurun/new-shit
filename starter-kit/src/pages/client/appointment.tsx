@@ -1,28 +1,15 @@
-// ** React Imports
 import { useEffect, useState } from 'react'
-
-// ** MUI Imports
 import Box from '@mui/material/Box'
 import { Theme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
-
-// ** Redux Imports
 import { useDispatch, useSelector } from 'react-redux'
-
-// ** Hooks
 import { useSettings } from 'src/@core/hooks/useSettings'
-
-// ** Types
 import { RootState, AppDispatch } from 'src/store'
 import { CalendarColors, CalendarFiltersType } from 'src/types/apps/calendarTypes'
-
-// ** FullCalendar & App Components Imports
 import Calendar from 'src/views/apps/calendar/Calendar'
 import SidebarLeft from 'src/views/apps/calendar/SidebarLeft'
 import CalendarWrapper from 'src/@core/styles/libs/fullcalendar'
 import AddEventSidebar from 'src/views/apps/calendar/AddEventSidebar'
-
-// ** Actions
 import {
   addEvent,
   fetchEvents,
@@ -31,7 +18,7 @@ import {
   handleSelectEvent,
   handleAllCalendars,
   handleCalendarsUpdate
-} from 'src/store/apps/calendar'
+} from 'src/store/apps/calendar/index'
 
 // ** CalendarColors
 const calendarsColor: CalendarColors = {
