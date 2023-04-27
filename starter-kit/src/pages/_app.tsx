@@ -6,16 +6,10 @@ import type { AppProps } from 'next/app'
 import NProgress from 'nprogress'
 import { CacheProvider } from '@emotion/react'
 import type { EmotionCache } from '@emotion/cache'
-import { defaultACLObj } from 'src/configs/acl'
 import themeConfig from 'src/configs/themeConfig'
-import 'src/@fake-db'
 import { Toaster } from 'react-hot-toast'
 import UserLayout from 'src/layouts/UserLayout'
-import AclGuard from 'src/@core/components/auth/AclGuard'
 import ThemeComponent from 'src/@core/theme/ThemeComponent'
-import AuthGuard from 'src/@core/components/auth/AuthGuard'
-import GuestGuard from 'src/@core/components/auth/GuestGuard'
-import Spinner from 'src/@core/components/spinner'
 import { AuthProvider } from 'src/context/AuthContext'
 import { SettingsConsumer, SettingsProvider } from 'src/@core/context/settingsContext'
 import ReactHotToast from 'src/@core/styles/libs/react-hot-toast'
@@ -29,6 +23,9 @@ import 'src/iconify-bundle/icons-bundle-react'
 import '../../styles/globals.css'
 import {SessionContextProvider} from "@supabase/auth-helpers-react";
 import {createBrowserSupabaseClient} from "@supabase/auth-helpers-nextjs";
+import GuestGuard from "../@core/components/auth/GuestGuard";
+import Spinner from "../@core/components/spinner";
+import AuthGuard from "../@core/components/auth/AuthGuard";
 
 // ** Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {
@@ -74,16 +71,13 @@ const App = (props: ExtendedAppProps) => {
 
   // Variables
   const contentHeightFixed = Component.contentHeightFixed ?? false
-  const getLayout =
-    Component.getLayout ?? (page => <UserLayout contentHeightFixed={contentHeightFixed}>{page}</UserLayout>)
+  const getLayout = Component.getLayout ?? (page => <UserLayout contentHeightFixed={contentHeightFixed}>{page}</UserLayout>)
 
   const setConfig = Component.setConfig ?? undefined
 
   const authGuard = Component.authGuard ?? true
 
   const guestGuard = Component.guestGuard ?? false
-
-  const aclAbilities = Component.acl ?? defaultACLObj
 
   return (
     <SessionContextProvider
@@ -107,9 +101,7 @@ const App = (props: ExtendedAppProps) => {
                 return (
                   <ThemeComponent settings={settings}>
                     <Guard authGuard={authGuard} guestGuard={guestGuard}>
-                      <AclGuard aclAbilities={aclAbilities} guestGuard={guestGuard} authGuard={authGuard}>
                         {getLayout(<Component {...pageProps} />)}
-                      </AclGuard>
                     </Guard>
                     <ReactHotToast>
                       <Toaster position={settings.toastPosition} toastOptions={{ className: 'react-hot-toast' }} />

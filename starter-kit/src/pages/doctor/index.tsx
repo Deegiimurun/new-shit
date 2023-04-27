@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
+import ACLPage from "../nurse";
 
 const Home = () => {
   return (
@@ -33,6 +34,11 @@ const Home = () => {
       </Grid>
     </Grid>
   )
+}
+
+ACLPage.acl = {
+  action: 'read',
+  subject: 'doctor'
 }
 
 export default Home

@@ -1,8 +1,6 @@
 import {createContext, useEffect, useState, ReactNode} from 'react'
 import {useRouter} from 'next/router'
-import axios from 'axios'
-import authConfig from 'src/configs/auth'
-import {AuthValuesType, LoginParams, ErrCallbackType, UserDataType} from './types'
+import {AuthValuesType, LoginParams, ErrCallbackType} from './types'
 import {useSupabaseClient} from "@supabase/auth-helpers-react";
 import {User} from "@supabase/supabase-js";
 
@@ -67,8 +65,6 @@ const AuthProvider = ({children}: Props) => {
 
   const handleLogout = () => {
     setUser(null)
-    window.localStorage.removeItem('userData')
-    window.localStorage.removeItem(authConfig.storageTokenKeyName)
     router.push('/login')
   }
 
