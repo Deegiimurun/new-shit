@@ -34,6 +34,7 @@ export type BlankLayoutWithAppBarProps = {
 export type NavSectionTitle = {
   auth?: boolean
   sectionTitle: string
+  role: 'doctor'|'client'|'nurse'
 }
 
 export type NavGroup = {
@@ -43,6 +44,7 @@ export type NavGroup = {
   badgeContent?: string
   children?: (NavGroup | NavLink)[]
   badgeColor?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
+  role: 'doctor'|'client'|'nurse'
 }
 
 export type NavLink = {
@@ -55,6 +57,7 @@ export type NavLink = {
   externalLink?: boolean
   openInNewTab?: boolean
   badgeColor?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
+  role: 'doctor'|'client'|'nurse'
 }
 
 export type VerticalNavItemsType = (NavLink | NavGroup | NavSectionTitle)[]

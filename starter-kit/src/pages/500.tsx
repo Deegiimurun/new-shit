@@ -34,15 +34,6 @@ const Img = styled('img')(({ theme }) => ({
   }
 }))
 
-const TreeIllustration = styled('img')(({ theme }) => ({
-  left: 0,
-  bottom: '5rem',
-  position: 'absolute',
-  [theme.breakpoints.down('lg')]: {
-    bottom: 0
-  }
-}))
-
 const Error500 = () => {
   return (
     <Box className='content-center'>
