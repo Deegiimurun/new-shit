@@ -91,7 +91,7 @@ const Register = () => {
     setError,
     handleSubmit,
     formState: { errors }
-  } = useForm({
+  } = useForm<FormData>({
     mode: 'onBlur',
     resolver: yupResolver(schema)
   })
