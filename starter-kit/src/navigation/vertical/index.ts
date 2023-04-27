@@ -5,7 +5,7 @@ const navigation = (): VerticalNavItemsType => {
   return [
     {
       title: 'Нүүр хуудас',
-      path: '/client/home',
+      path: '/client',
       icon: 'mdi:doctor-outline',
       role: 'client'
     },
