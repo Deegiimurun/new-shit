@@ -213,7 +213,6 @@ const InvoiceList = () => {
       <Grid item xs={12}
             height='100%'>
         <Card sx={{height: '100%'}}>
-          <TableHeader value={value} selectedRows={selectedRows} handleFilter={handleFilter}/>
           <DataGrid
             autoHeight
             pagination
@@ -224,6 +223,11 @@ const InvoiceList = () => {
             pageSize={Number(pageSize)}
             rowsPerPageOptions={[10, 25, 50]}
             onSelectionModelChange={rows => setSelectedRows(rows)}
+            componentsProps={{
+              pagination: {
+                labelRowsPerPage: '1 хуудсан дахь мөр',
+              },
+            }}
             onPageSizeChange={newPageSize => setPageSize(newPageSize)}
           />
         </Card>
