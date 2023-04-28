@@ -51,7 +51,6 @@ const Calendar = (props: CalendarType) => {
   }, [calendarApi, setCalendarApi])
 
   if (store) {
-    // ** calendarOptions(Props)
     const calendarOptions = {
       events: store.events.length ? store.events : [],
       plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin, bootstrap5Plugin],
@@ -65,37 +64,11 @@ const Calendar = (props: CalendarType) => {
           titleFormat: { year: 'numeric', month: 'long', day: 'numeric' }
         }
       },
-
-      /*
-      Enable dragging and resizing event
-      ? Docs: https://fullcalendar.io/docs/editable
-    */
       editable: true,
-
-      /*
-      Enable resizing event from start
-      ? Docs: https://fullcalendar.io/docs/eventResizableFromStart
-    */
       eventResizableFromStart: true,
-
-      /*
-        Automatically scroll the scroll-containers during event drag-and-drop and date selecting
-        ? Docs: https://fullcalendar.io/docs/dragScroll
-      */
       dragScroll: true,
-
-      /*
-        Max number of events within a given day
-        ? Docs: https://fullcalendar.io/docs/dayMaxEvents
-      */
-      dayMaxEvents: 2,
-
-      /*
-        Determines if day names and week names are clickable
-        ? Docs: https://fullcalendar.io/docs/navLinks
-      */
+      dayMaxEvents: 1,
       navLinks: true,
-
       eventClassNames({ event: calendarEvent }: any) {
         // @ts-ignore
         const colorName = calendarsColor[calendarEvent._def.extendedProps.calendar]
@@ -105,7 +78,6 @@ const Calendar = (props: CalendarType) => {
           `bg-${colorName}`
         ]
       },
-
       eventClick({ event: clickedEvent }: any) {
         dispatch(handleSelectEvent(clickedEvent))
         handleAddEventSidebarToggle()
@@ -137,34 +109,15 @@ const Calendar = (props: CalendarType) => {
         handleAddEventSidebarToggle()
       },
 
-      /*
-        Handle event drop (Also include dragged event)
-        ? Docs: https://fullcalendar.io/docs/eventDrop
-        ? We can use `eventDragStop` but it doesn't return updated event so we have to use `eventDrop` which returns updated event
-      */
-      eventDrop({ event: droppedEvent }: any) {
-        dispatch(updateEvent(droppedEvent))
-      },
-
-      /*
-        Handle event resize
-        ? Docs: https://fullcalendar.io/docs/eventResize
-      */
-      eventResize({ event: resizedEvent }: any) {
-        dispatch(updateEvent(resizedEvent))
-      },
-
       ref: calendarRef,
-
-      // Get direction from app state (store)
       direction
     }
 
     // @ts-ignore
-    return <FullCalendar {...calendarOptions} />
+    return <FullCalendar height='100%' {...calendarOptions}  />
   } else {
     return null
   }
 }
 
-export default Calendar
+export default Calendar;

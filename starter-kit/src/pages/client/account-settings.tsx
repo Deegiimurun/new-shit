@@ -257,7 +257,7 @@ const TabAccount = () => {
 
                 <Grid item xs={12}>
                   <Button variant='contained' sx={{ mr: 4 }}>
-                    Save Changes
+                    Хадгалах
                   </Button>
                 </Grid>
               </Grid>
