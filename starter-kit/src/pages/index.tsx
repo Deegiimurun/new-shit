@@ -9,9 +9,9 @@ const Home = () => {
 
   useEffect(() => {
     if (auth.user && router.route === '/') {
-      router.replace(`${auth.user.user_metadata.role}`)
+      router.push(`/${auth.user.user_metadata.role}`)
     }
-  }, [auth.user, router])
+  }, [auth, router])
 
   return <Spinner sx={{ height: '100%' }} />
 }

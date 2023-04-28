@@ -842,7 +842,7 @@ export const fetchData = createAsyncThunk('appInvoice/fetchData', async (params:
     ]
   }
 
-  return data
+  return data as any
 })
 
 export const deleteInvoice = createAsyncThunk(
@@ -868,8 +868,6 @@ export const appInvoiceSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addCase(fetchData.fulfilled, (state, action) => {
-      console.log(state)
-      console.log(action)
       state.data = action.payload.invoices
       state.params = action.payload.params
       state.allData = action.payload.allData

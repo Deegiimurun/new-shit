@@ -14,9 +14,6 @@ import { LayoutProps } from 'src/@core/layouts/types'
 // ** Custom Icon Import
 import Icon from 'src/@core/components/icon'
 
-// ** Configs
-import themeConfig from 'src/configs/themeConfig'
-
 interface Props {
   navHover: boolean
   collapsedNavWidth: number
@@ -45,13 +42,15 @@ const HeaderTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
   lineHeight: 'normal',
   textTransform: 'uppercase',
   color: theme.palette.text.primary,
-  transition: 'opacity .25s ease-in-out, margin .25s ease-in-out'
+  transition: 'opacity .25s ease-in-out, margin .25s ease-in-out',
+  width: '100%'
 }))
 
 const LinkStyled = styled(Link)({
   display: 'flex',
   alignItems: 'center',
-  textDecoration: 'none'
+  textDecoration: 'none',
+  width: '100%'
 })
 
 const VerticalNavHeader = (props: Props) => {
@@ -70,7 +69,6 @@ const VerticalNavHeader = (props: Props) => {
   } = props
 
   // ** Hooks & Vars
-  const theme = useTheme()
   const { navCollapsed } = settings
 
   const menuCollapsedStyles = navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 }
@@ -97,9 +95,9 @@ const VerticalNavHeader = (props: Props) => {
         userNavMenuBranding(props)
       ) : (
         <LinkStyled href='/'>
-            <Image priority src='/logo2.png' height={29} width={35} />
-          <HeaderTitle variant='h6' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 3 }) }}>
-            {themeConfig.appName}
+            <Image alt='alt' priority src='/logo2.png' height={29} width={35} />
+          <HeaderTitle align='center' fontSize='35px' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 3 })}}>
+            МУИС
           </HeaderTitle>
         </LinkStyled>
       )}

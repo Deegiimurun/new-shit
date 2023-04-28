@@ -145,7 +145,7 @@ const Register = () => {
                 justifyContent: 'center'
               }}
             >
-                <Image priority src='/logo2.png' height={29} width={35} />
+                <Image alt='alt' priority src='/logo2.png' height={29} width={35} />
               <Typography
                 variant='h6'
                 sx={{

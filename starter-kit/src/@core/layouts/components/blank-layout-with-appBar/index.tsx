@@ -6,7 +6,6 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import { styled, useTheme } from '@mui/material/styles'
-import CircularProgress from '@mui/material/CircularProgress'
 import Image from 'next/image'
 
 // ** Configs
@@ -46,7 +45,7 @@ const BlankLayoutAppBar = () => {
         }}
       >
         <LinkStyled href='/'>
-        <Image priority src='/logo2.png' height={29} width={35} />
+        <Image alt='alt' priority src='/logo2.png' height={29} width={35} />
           <Typography
             variant='h6'
             sx={{

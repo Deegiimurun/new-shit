@@ -32,16 +32,13 @@ const AppBarContent = (props: Props) => {
   // ** Props
   const { appBarContent: userAppBarContent, appBarBranding: userAppBarBranding } = props
 
-  // ** Hooks
-  const theme = useTheme()
-
   return (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       {userAppBarBranding ? (
         userAppBarBranding(props)
       ) : (
         <LinkStyled href='/'>
-           <Image priority src='/logo2.png' height={29} width={35} />
+           <Image alt='alt' priority src='/logo2.png' height={29} width={35} />
           <Typography
             variant='h6'
             sx={{

@@ -5,26 +5,26 @@ const navigation = (): VerticalNavItemsType => {
   return [
     {
       title: 'Нүүр хуудас',
-      path: '/client',
-      icon: 'mdi:doctor-outline',
+      path: '/client/home',
+      icon: 'mdi:home-outline',
       role: 'client'
     },
     {
-      title: 'Хэрэглэгчийн тохиргоо',
+      title: 'Тохиргоо',
       path: '/client/account-settings',
-      icon: 'mdi:doctor-outline',
+      icon: 'mdi:settings-outline',
       role: 'client'
     },
     {
       title: 'Цаг захиалах',
       path: '/client/appointment',
-      icon: 'mdi:email-outline',
+      icon: 'mdi:clock-outline',
       role: 'client'
     },
     {
       title: 'Хариу харах',
       path: '/client/test-result',
-      icon: 'mdi:email-outline',
+      icon: 'mdi:file-document-box',
       role: 'client'
     },
   ]

@@ -57,10 +57,10 @@ const AuthProvider = ({children}: Props) => {
     }
 
     const returnUrl = router.query.returnUrl;
-    const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/';
-    setUser(data.user);
+    const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : `/`;
 
-    await router.replace(redirectURL as string)
+    await router.push(redirectURL as string)
+    setUser(data.user);
   }
 
   const handleLogout = async () => {

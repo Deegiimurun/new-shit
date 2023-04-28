@@ -273,7 +273,7 @@ const InvoiceList = () => {
             </IconButton>
           </Tooltip>
           <Tooltip title='View'>
-            <IconButton size='small' component={Link} href={`/apps/invoice/preview/${row.id}`}>
+            <IconButton size='small' component={Link} href={`/client/test-result/${row.id}`}>
               <Icon icon='mdi:eye-outline' fontSize={20} />
             </IconButton>
           </Tooltip>
