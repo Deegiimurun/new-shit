@@ -178,10 +178,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
       return (
         <Fragment>
           <Button size='large' type='submit' variant='contained' sx={{ mr: 4 }}>
-            Add
-          </Button>
-          <Button size='large' variant='outlined' color='secondary' onClick={resetToEmptyValues}>
-            Reset
+            Захиалах
           </Button>
         </Fragment>
       )
@@ -190,9 +187,6 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         <Fragment>
           <Button size='large' type='submit' variant='contained' sx={{ mr: 4 }}>
             Update
-          </Button>
-          <Button size='large' variant='outlined' color='secondary' onClick={resetToStoredValues}>
-            Reset
           </Button>
         </Fragment>
       )
@@ -217,7 +211,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         }}
       >
         <Typography variant='h6'>
-          {store.selectedEvent !== null && store.selectedEvent.title.length ? 'Update Event' : 'Add Event'}
+          {store.selectedEvent !== null && store.selectedEvent.title.length ? 'Update Event' : 'Цаг авах'}
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {store.selectedEvent !== null && store.selectedEvent.title.length ? (
@@ -243,7 +237,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
-                  <TextField label='Title' value={value} onChange={onChange} error={Boolean(errors.title)} />
+                  <TextField label='Дэлгэрэнгүй' value={value} onChange={onChange} error={Boolean(errors.title)} />
                 )}
               />
               {errors.title && (
@@ -253,14 +247,14 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               )}
             </FormControl>
             <FormControl fullWidth sx={{ mb: 6 }}>
-              <InputLabel id='event-calendar'>Calendar</InputLabel>
+              <InputLabel id='event-calendar'>Төрөл</InputLabel>
               <Select
                 label='Calendar'
                 value={values.calendar}
                 labelId='event-calendar'
                 onChange={e => setValues({ ...values, calendar: e.target.value })}
               >
-                <MenuItem value='Personal'>Personal</MenuItem>
+                <MenuItem value='Яаралтай'>Personal</MenuItem>
                 <MenuItem value='Business'>Business</MenuItem>
                 <MenuItem value='Family'>Family</MenuItem>
                 <MenuItem value='Holiday'>Holiday</MenuItem>
@@ -276,53 +270,53 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
                 startDate={values.startDate as EventDateType}
                 showTimeSelect={!values.allDay}
                 dateFormat={!values.allDay ? 'yyyy-MM-dd hh:mm' : 'yyyy-MM-dd'}
-                customInput={<PickersComponent label='Start Date' registername='startDate' />}
+                customInput={<PickersComponent label='Огноо' registername='startDate' />}
                 onChange={(date: Date) => setValues({ ...values, startDate: new Date(date) })}
                 onSelect={handleStartDate}
               />
             </Box>
-            <Box sx={{ mb: 6 }}>
-              <DatePicker
-                selectsEnd
-                id='event-end-date'
-                endDate={values.endDate as EventDateType}
-                selected={values.endDate as EventDateType}
-                minDate={values.startDate as EventDateType}
-                startDate={values.startDate as EventDateType}
-                showTimeSelect={!values.allDay}
-                dateFormat={!values.allDay ? 'yyyy-MM-dd hh:mm' : 'yyyy-MM-dd'}
-                customInput={<PickersComponent label='End Date' registername='endDate' />}
-                onChange={(date: Date) => setValues({ ...values, endDate: new Date(date) })}
-              />
-            </Box>
-            <FormControl sx={{ mb: 6 }}>
-              <FormControlLabel
-                label='All Day'
-                control={
-                  <Switch checked={values.allDay} onChange={e => setValues({ ...values, allDay: e.target.checked })} />
-                }
-              />
-            </FormControl>
-            <TextField
-              fullWidth
-              type='url'
-              id='event-url'
-              sx={{ mb: 6 }}
-              label='Event URL'
-              value={values.url}
-              onChange={e => setValues({ ...values, url: e.target.value })}
-            />
+            {/*<Box sx={{ mb: 6 }}>*/}
+            {/*  <DatePicker*/}
+            {/*    selectsEnd*/}
+            {/*    id='event-end-date'*/}
+            {/*    endDate={values.endDate as EventDateType}*/}
+            {/*    selected={values.endDate as EventDateType}*/}
+            {/*    minDate={values.startDate as EventDateType}*/}
+            {/*    startDate={values.startDate as EventDateType}*/}
+            {/*    showTimeSelect={!values.allDay}*/}
+            {/*    dateFormat={!values.allDay ? 'yyyy-MM-dd hh:mm' : 'yyyy-MM-dd'}*/}
+            {/*    customInput={<PickersComponent label='End Date' registername='endDate' />}*/}
+            {/*    onChange={(date: Date) => setValues({ ...values, endDate: new Date(date) })}*/}
+            {/*  />*/}
+            {/*</Box>*/}
+            {/*<FormControl sx={{ mb: 6 }}>*/}
+            {/*  <FormControlLabel*/}
+            {/*    label='All Day'*/}
+            {/*    control={*/}
+            {/*      <Switch checked={values.allDay} onChange={e => setValues({ ...values, allDay: e.target.checked })} />*/}
+            {/*    }*/}
+            {/*  />*/}
+            {/*</FormControl>*/}
+            {/*<TextField*/}
+            {/*  fullWidth*/}
+            {/*  type='url'*/}
+            {/*  id='event-url'*/}
+            {/*  sx={{ mb: 6 }}*/}
+            {/*  label='Event URL'*/}
+            {/*  value={values.url}*/}
+            {/*  onChange={e => setValues({ ...values, url: e.target.value })}*/}
+            {/*/>*/}
             <FormControl fullWidth sx={{ mb: 6 }}>
-              <InputLabel id='event-guests'>Guests</InputLabel>
+              <InputLabel id='event-guests'>Үйлчлүүлэгчийн төрөл</InputLabel>
               <Select
                 multiple
-                label='Guests'
+                label='Үйлчлүүлэгчийн төрөл'
                 value={values.guests}
                 labelId='event-guests'
                 id='event-guests-select'
                 onChange={e => setValues({ ...values, guests: e.target.value })}
               >
-                <MenuItem value='bruce'>Bruce</MenuItem>
+                <MenuItem value='bruce'>Оюутан</MenuItem>
                 <MenuItem value='clark'>Clark</MenuItem>
                 <MenuItem value='diana'>Diana</MenuItem>
                 <MenuItem value='john'>John</MenuItem>
@@ -334,7 +328,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               multiline
               fullWidth
               sx={{ mb: 6 }}
-              label='Description'
+              label='Тайлбар'
               id='event-description'
               value={values.description}
               onChange={e => setValues({ ...values, description: e.target.value })}

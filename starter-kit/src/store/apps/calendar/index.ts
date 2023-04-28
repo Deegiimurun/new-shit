@@ -23,21 +23,10 @@ export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async (ca
       {
         id: 1,
         url: '',
-        title: 'Design Review',
+        title: 'Үзлэгтэй',
         start: date,
-        end: nextDay,
+        end: date,
         allDay: false,
-        extendedProps: {
-          calendar: 'Business'
-        }
-      },
-      {
-        id: 2,
-        url: '',
-        title: 'Meeting With Client',
-        start: new Date(date.getFullYear(), date.getMonth() + 1, -11),
-        end: new Date(date.getFullYear(), date.getMonth() + 1, -10),
-        allDay: true,
         extendedProps: {
           calendar: 'Business'
         }
@@ -45,10 +34,10 @@ export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async (ca
       {
         id: 3,
         url: '',
-        title: 'Family Trip',
+        title: 'Хариу эерэг гарсан',
         allDay: true,
         start: new Date(date.getFullYear(), date.getMonth() + 1, -9),
-        end: new Date(date.getFullYear(), date.getMonth() + 1, -7),
+        end: new Date(date.getFullYear(), date.getMonth() + 1, -8),
         extendedProps: {
           calendar: 'Holiday'
         }
@@ -56,7 +45,7 @@ export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async (ca
       {
         id: 4,
         url: '',
-        title: "Doctor's Appointment",
+        title: "Хариу сөрөг гарсан",
         start: new Date(date.getFullYear(), date.getMonth() + 1, -11),
         end: new Date(date.getFullYear(), date.getMonth() + 1, -10),
         allDay: true,
@@ -67,7 +56,7 @@ export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async (ca
       {
         id: 5,
         url: '',
-        title: 'Dart Game?',
+        title: 'Шинжилгээний хариу гарж байна',
         start: new Date(date.getFullYear(), date.getMonth() + 1, -13),
         end: new Date(date.getFullYear(), date.getMonth() + 1, -12),
         allDay: true,
@@ -76,20 +65,9 @@ export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async (ca
         }
       },
       {
-        id: 6,
-        url: '',
-        title: 'Meditation',
-        start: new Date(date.getFullYear(), date.getMonth() + 1, -13),
-        end: new Date(date.getFullYear(), date.getMonth() + 1, -12),
-        allDay: true,
-        extendedProps: {
-          calendar: 'Personal'
-        }
-      },
-      {
         id: 7,
         url: '',
-        title: 'Dinner',
+        title: 'Хүлээгдэж байна',
         start: new Date(date.getFullYear(), date.getMonth() + 1, -13),
         end: new Date(date.getFullYear(), date.getMonth() + 1, -12),
         allDay: true,
@@ -98,20 +76,9 @@ export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async (ca
         }
       },
       {
-        id: 8,
-        url: '',
-        title: 'Product Review',
-        start: new Date(date.getFullYear(), date.getMonth() + 1, -13),
-        end: new Date(date.getFullYear(), date.getMonth() + 1, -12),
-        allDay: true,
-        extendedProps: {
-          calendar: 'Business'
-        }
-      },
-      {
         id: 9,
         url: '',
-        title: 'Monthly Meeting',
+        title: 'Үзлэг захиалсан',
         start: nextMonth,
         end: nextMonth,
         allDay: true,
