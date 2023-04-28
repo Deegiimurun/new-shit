@@ -6,15 +6,28 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import Select from '@mui/material/Select'
+import Dialog from '@mui/material/Dialog'
 import { styled } from '@mui/material/styles'
+import Checkbox from '@mui/material/Checkbox'
 import MenuItem from '@mui/material/MenuItem'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import InputLabel from '@mui/material/InputLabel'
+import CardHeader from '@mui/material/CardHeader'
 import FormControl from '@mui/material/FormControl'
 import CardContent from '@mui/material/CardContent'
+import DialogContent from '@mui/material/DialogContent'
+import DialogActions from '@mui/material/DialogActions'
+import FormHelperText from '@mui/material/FormHelperText'
 import InputAdornment from '@mui/material/InputAdornment'
 import Button, { ButtonProps } from '@mui/material/Button'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
+// ** Third Party Imports
+import { useForm, Controller } from 'react-hook-form'
+
+// ** Icon Imports
+import Icon from 'src/@core/components/icon'
 
 interface Data {
   email: string
@@ -36,14 +49,14 @@ const initialData: Data = {
   number: '',
   address: '',
   zipCode: '',
-  lastName: '',
-  currency: '',
-  firstName: '',
-  language: '',
-  timezone: '',
-  country: '',
-  email: '',
-  organization: ''
+  lastName: 'Doe',
+  currency: 'usd',
+  firstName: 'John',
+  language: 'arabic',
+  timezone: 'gmt-12',
+  country: 'australia',
+  email: 'john.doe@example.com',
+  organization: 'ThemeSelection'
 }
 
 const ImgStyled = styled('img')(({ theme }) => ({
@@ -60,10 +73,43 @@ const ButtonStyled = styled(Button)<ButtonProps & { component?: ElementType; htm
   }
 }))
 
+const ResetButtonStyled = styled(Button)<ButtonProps>(({ theme }) => ({
+  marginLeft: theme.spacing(4),
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    marginLeft: 0,
+    textAlign: 'center',
+    marginTop: theme.spacing(4)
+  }
+}))
+
 const TabAccount = () => {
+  // ** State
+  const [open, setOpen] = useState<boolean>(false)
   const [inputValue, setInputValue] = useState<string>('')
+  const [userInput, setUserInput] = useState<string>('yes')
   const [formData, setFormData] = useState<Data>(initialData)
   const [imgSrc, setImgSrc] = useState<string>('/images/avatars/1.png')
+  const [secondDialogOpen, setSecondDialogOpen] = useState<boolean>(false)
+
+  // ** Hooks
+  const {
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({ defaultValues: { checkbox: false } })
+
+  const handleClose = () => setOpen(false)
+
+  const handleSecondDialogClose = () => setSecondDialogOpen(false)
+
+  const onSubmit = () => setOpen(true)
+
+  const handleConfirmation = (value: string) => {
+    handleClose()
+    setUserInput(value)
+    setSecondDialogOpen(true)
+  }
 
   const handleInputImageChange = (file: ChangeEvent) => {
     const reader = new FileReader()
@@ -76,6 +122,10 @@ const TabAccount = () => {
         setInputValue(reader.result as string)
       }
     }
+  }
+  const handleInputImageReset = () => {
+    setInputValue('')
+    setImgSrc('/images/avatars/1.png')
   }
 
   const handleFormChange = (field: keyof Data, value: Data[keyof Data]) => {
@@ -93,7 +143,7 @@ const TabAccount = () => {
                 <ImgStyled src={imgSrc} alt='Profile Pic' />
                 <div>
                   <ButtonStyled component='label' variant='contained' htmlFor='account-settings-upload-image'>
-                    Шинэ зураг оруулах
+                    Зураг оруулах
                     <input
                       hidden
                       type='file'
@@ -103,8 +153,11 @@ const TabAccount = () => {
                       id='account-settings-upload-image'
                     />
                   </ButtonStyled>
+                  <ResetButtonStyled color='secondary' variant='outlined' onClick={handleInputImageReset}>
+                    Шинэчлэх
+                  </ResetButtonStyled>
                   <Typography variant='caption' sx={{ mt: 4, display: 'block', color: 'text.disabled' }}>
-                    Зөвхөн PNG эсвэл JPEG зураг оруулна уу.800K-с их зураг тавигдахгүй.
+                    PNG JPEG өргөтгөлтэй зураг байна.
                   </Typography>
                 </div>
               </Box>
@@ -114,7 +167,8 @@ const TabAccount = () => {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
-                    label='First Name'
+                    label='Нэр'
+                    placeholder='Нэр'
                     value={formData.firstName}
                     onChange={e => handleFormChange('firstName', e.target.value)}
                   />
@@ -122,7 +176,8 @@ const TabAccount = () => {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
-                    label='Last Name'
+                    label='Овог'
+                    placeholder='Овог'
                     value={formData.lastName}
                     onChange={e => handleFormChange('lastName', e.target.value)}
                   />
@@ -131,15 +186,17 @@ const TabAccount = () => {
                   <TextField
                     fullWidth
                     type='email'
-                    label='Email'
+                    label='И-Мэйл'
                     value={formData.email}
+                    placeholder='И-Мэйл'
                     onChange={e => handleFormChange('email', e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
-                    label='Organization'
+                    label='Нас'
+                    placeholder='Нас'
                     value={formData.organization}
                     onChange={e => handleFormChange('organization', e.target.value)}
                   />
@@ -148,8 +205,9 @@ const TabAccount = () => {
                   <TextField
                     fullWidth
                     type='number'
-                    label='Phone Number'
+                    label='Утасны дугаар'
                     value={formData.number}
+                    placeholder='Утасныдугаар'
                     onChange={e => handleFormChange('number', e.target.value)}
                     InputProps={{ startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment> }}
                   />
@@ -157,107 +215,40 @@ const TabAccount = () => {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
-                    label='Address'
+                    label='Гэрийн хаяг'
+                    placeholder='Гэрийн хаяг'
                     value={formData.address}
                     onChange={e => handleFormChange('address', e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label='State'
-                    value={formData.state}
-                    onChange={e => handleFormChange('state', e.target.value)}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    type='number'
-                    label='Zip Code'
-                    value={formData.zipCode}
-                    onChange={e => handleFormChange('zipCode', e.target.value)}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
-                    <InputLabel>Country</InputLabel>
+                    <InputLabel>Хүйс</InputLabel>
                     <Select
-                      label='Country'
+                      label='Хүйс'
                       value={formData.country}
                       onChange={e => handleFormChange('country', e.target.value)}
                     >
-                      <MenuItem value='australia'>Australia</MenuItem>
-                      <MenuItem value='canada'>Canada</MenuItem>
-                      <MenuItem value='france'>France</MenuItem>
-                      <MenuItem value='united-kingdom'>United Kingdom</MenuItem>
-                      <MenuItem value='united-states'>United States</MenuItem>
+                      <MenuItem value='male'>Эр</MenuItem>
+                      <MenuItem value='female'>Эм</MenuItem>
                     </Select>
                   </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <FormControl fullWidth>
-                    <InputLabel>Language</InputLabel>
-                    <Select
-                      label='Language'
-                      value={formData.language}
-                      onChange={e => handleFormChange('language', e.target.value)}
-                    >
-                      <MenuItem value='arabic'>Arabic</MenuItem>
-                      <MenuItem value='english'>English</MenuItem>
-                      <MenuItem value='french'>French</MenuItem>
-                      <MenuItem value='german'>German</MenuItem>
-                      <MenuItem value='portuguese'>Portuguese</MenuItem>
-                    </Select>
-                  </FormControl>
+                  <TextField
+                    fullWidth
+                    label='Регистрийн дугаар'
+                    placeholder='Регистрийн дугаар'
+                    value={formData.address}
+                    onChange={e => handleFormChange('address', e.target.value)}
+                  />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <FormControl fullWidth>
-                    <InputLabel>Timezone</InputLabel>
-                    <Select
-                      label='Timezone'
-                      value={formData.timezone}
-                      onChange={e => handleFormChange('timezone', e.target.value)}
-                    >
-                      <MenuItem value='gmt-12'>(GMT-12:00) International Date Line West</MenuItem>
-                      <MenuItem value='gmt-11'>(GMT-11:00) Midway Island, Samoa</MenuItem>
-                      <MenuItem value='gmt-10'>(GMT-10:00) Hawaii</MenuItem>
-                      <MenuItem value='gmt-09'>(GMT-09:00) Alaska</MenuItem>
-                      <MenuItem value='gmt-08'>(GMT-08:00) Pacific Time (US & Canada)</MenuItem>
-                      <MenuItem value='gmt-08-baja'>(GMT-08:00) Tijuana, Baja California</MenuItem>
-                      <MenuItem value='gmt-07'>(GMT-07:00) Chihuahua, La Paz, Mazatlan</MenuItem>
-                      <MenuItem value='gmt-07-mt'>(GMT-07:00) Mountain Time (US & Canada)</MenuItem>
-                      <MenuItem value='gmt-06'>(GMT-06:00) Central America</MenuItem>
-                      <MenuItem value='gmt-06-ct'>(GMT-06:00) Central Time (US & Canada)</MenuItem>
-                      <MenuItem value='gmt-06-mc'>(GMT-06:00) Guadalajara, Mexico City, Monterrey</MenuItem>
-                      <MenuItem value='gmt-06-sk'>(GMT-06:00) Saskatchewan</MenuItem>
-                      <MenuItem value='gmt-05'>(GMT-05:00) Bogota, Lima, Quito, Rio Branco</MenuItem>
-                      <MenuItem value='gmt-05-et'>(GMT-05:00) Eastern Time (US & Canada)</MenuItem>
-                      <MenuItem value='gmt-05-ind'>(GMT-05:00) Indiana (East)</MenuItem>
-                      <MenuItem value='gmt-04'>(GMT-04:00) Atlantic Time (Canada)</MenuItem>
-                      <MenuItem value='gmt-04-clp'>(GMT-04:00) Caracas, La Paz</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <FormControl fullWidth>
-                    <InputLabel>Currency</InputLabel>
-                    <Select
-                      label='Currency'
-                      value={formData.currency}
-                      onChange={e => handleFormChange('currency', e.target.value)}
-                    >
-                      <MenuItem value='usd'>USD</MenuItem>
-                      <MenuItem value='eur'>EUR</MenuItem>
-                      <MenuItem value='pound'>Pound</MenuItem>
-                      <MenuItem value='bitcoin'>Bitcoin</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-
                 <Grid item xs={12}>
                   <Button variant='contained' sx={{ mr: 4 }}>
-                    Save Changes
+                    Хадгалах
+                  </Button>
+                  <Button type='reset' variant='outlined' color='secondary' onClick={() => setFormData(initialData)}>
+                    Шинэчлэх
                   </Button>
                 </Grid>
               </Grid>
