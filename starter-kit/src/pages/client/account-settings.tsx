@@ -209,7 +209,7 @@ const TabAccount = () => {
                     value={formData.number}
                     placeholder='Утасныдугаар'
                     onChange={e => handleFormChange('number', e.target.value)}
-                    InputProps={{ startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment> }}
+                    InputProps={{ startAdornment: <InputAdornment position='start'>MGL (+976)</InputAdornment> }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -239,8 +239,8 @@ const TabAccount = () => {
                     fullWidth
                     label='Регистрийн дугаар'
                     placeholder='Регистрийн дугаар'
-                    value={formData.address}
-                    onChange={e => handleFormChange('address', e.target.value)}
+                    value={formData.regnum}
+                    onChange={e => handleFormChange('regnum', e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -261,3 +261,4 @@ const TabAccount = () => {
 }
 
 export default TabAccount
+'f'
