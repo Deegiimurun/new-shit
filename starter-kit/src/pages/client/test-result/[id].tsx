@@ -111,8 +111,8 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Нэр'
-                          placeholder='Нэр'
+                          label='Ухаан санаа'
+                          placeholder='Ухаан санаа'
                           // value={formData.firstName}
                           // onChange={e => handleFormChange('firstName', e.target.value)}
                         />
@@ -120,8 +120,8 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Овог'
-                          placeholder='Овог'
+                          label='Пульс'
+                          placeholder='Пульс'
                           // value={formData.lastName}
                           // onChange={e => handleFormChange('lastName', e.target.value)}
                         />
@@ -129,18 +129,17 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          type='email'
-                          label='И-Мэйл'
+                          label='Амьсгалын тоо'
                           // value={formData.email}
-                          placeholder='И-Мэйл'
+                          placeholder='Амьсгалын тоо'
                           // onChange={e => handleFormChange('email', e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Нас'
-                          placeholder='Нас'
+                          label='Биеийн температур'
+                          placeholder='Биеийн температур'
                           // value={formData.organization}
                           // onChange={e => handleFormChange('organization', e.target.value)}
                         />
@@ -148,10 +147,9 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          type='number'
-                          label='Утасны дугаар'
+                          label='Баруун даралт дээд'
                           // value={formData.number}
-                          placeholder='Утасны дугаар'
+                          placeholder='Баруун даралт дээд'
                           // onChange={e => handleFormChange('number', e.target.value)}
                           // InputProps={{ startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment> }}
                         />
@@ -159,30 +157,98 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Гэрийн хаяг'
-                          placeholder='Гэрийн хаяг'
+                          label='Баруун даралт доод'
+                          placeholder='Баруун даралт доод'
                           // value={formData.address}
                           // onChange={e => handleFormChange('address', e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <FormControl fullWidth>
-                          <InputLabel>Хүйс</InputLabel>
-                          <Select
-                            label='Хүйс'
-                            // value={formData.country}
-                            // onChange={e => handleFormChange('country', e.target.value)}
-                          >
-                            <MenuItem value='male'>Эр</MenuItem>
-                            <MenuItem value='female'>Эм</MenuItem>
-                          </Select>
-                        </FormControl>
+                        <TextField
+                          fullWidth
+                          label='Баруун даралт дундаж'
+                          placeholder='Баруун даралт дундаж'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Регистрийн дугаар'
-                          placeholder='Регистрийн дугаар'
+                          label='Баруун даралт нэмэлт'
+                          placeholder='Баруун даралт нэмэлт'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Зүүн даралт дээд'
+                          placeholder='Зүүн даралт дээд'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Зүүн даралт доод'
+                          placeholder='Зүүн даралт доод'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Зүүн даралт дундаж'
+                          placeholder='Зүүн даралт дундаж'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Зүүн даралт нэмэлт'
+                          placeholder='Зүүн даралт нэмэлт'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Сатураци'
+                          placeholder='Сатураци'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Өндөр'
+                          placeholder='Өндөр'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Жин'
+                          placeholder='Жин'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='БЖИ'
+                          placeholder='БЖИ'
                           // value={formData.address}
                           // onChange={e => handleFormChange('address', e.target.value)}
                         />
@@ -206,8 +272,8 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Нэр'
-                          placeholder='Нэр'
+                          label='Үзлэг хийгдсэн огноо'
+                          placeholder='Үзлэг хийгдсэн огноо'
                           // value={formData.firstName}
                           // onChange={e => handleFormChange('firstName', e.target.value)}
                         />
@@ -215,8 +281,8 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Овог'
-                          placeholder='Овог'
+                          label='Эмчийн үзлэг'
+                          placeholder='Эмчийн үзлэг'
                           // value={formData.lastName}
                           // onChange={e => handleFormChange('lastName', e.target.value)}
                         />
@@ -224,18 +290,30 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          type='email'
-                          label='И-Мэйл'
+                          label='Өвчний учир амбулатори'
                           // value={formData.email}
-                          placeholder='И-Мэйл'
+                          placeholder='Өвчний учир амбулатори'
                           // onChange={e => handleFormChange('email', e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
+                        <FormControl fullWidth>
+                          <InputLabel>Өвчлөлтэй эсэх</InputLabel>
+                          <Select
+                            label='Өвчлөлтэй эсэх'
+                            // value={formData.country}
+                            // onChange={e => handleFormChange('country', e.target.value)}
+                          >
+                            <MenuItem value='male'>Тийм</MenuItem>
+                            <MenuItem value='female'>Үгүй</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Нас'
-                          placeholder='Нас'
+                          label='Үзлэгийн төрөл'
+                          placeholder='Үзлэгийн төрөл'
                           // value={formData.organization}
                           // onChange={e => handleFormChange('organization', e.target.value)}
                         />
@@ -243,10 +321,9 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          type='number'
-                          label='Утасны дугаар'
+                          label='Үндсэн онош'
                           // value={formData.number}
-                          placeholder='Утасны дугаар'
+                          placeholder='Үндсэн онош'
                           // onChange={e => handleFormChange('number', e.target.value)}
                           // InputProps={{ startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment> }}
                         />
@@ -254,30 +331,84 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Гэрийн хаяг'
-                          placeholder='Гэрийн хаяг'
+                          label='Өвчний шалтгаан'
+                          placeholder='Өвчний шалтгаан'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Өвчлөл'
+                          placeholder='Өвчлөл'
                           // value={formData.address}
                           // onChange={e => handleFormChange('address', e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <FormControl fullWidth>
-                          <InputLabel>Хүйс</InputLabel>
+                          <InputLabel>Дээд шатлалд илгээсэн эсэх</InputLabel>
                           <Select
-                            label='Хүйс'
+                            label='Дээд шатлалд илгээсэн эсэх'
                             // value={formData.country}
                             // onChange={e => handleFormChange('country', e.target.value)}
                           >
-                            <MenuItem value='male'>Эр</MenuItem>
-                            <MenuItem value='female'>Эм</MenuItem>
+                            <MenuItem value='male'>Тийм</MenuItem>
+                            <MenuItem value='female'>Үгүй</MenuItem>
                           </Select>
                         </FormControl>
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Регистрийн дугаар'
-                          placeholder='Регистрийн дугаар'
+                          label='Хийгдсэн ажилбар'
+                          placeholder='Хийгдсэн ажилбар'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <FormControl fullWidth>
+                          <InputLabel>Хүчирхийлэлд өртсөн эсэх</InputLabel>
+                          <Select
+                            label='Хүчирхийлэлд өртсөн эсэх'
+                            // value={formData.country}
+                            // onChange={e => handleFormChange('country', e.target.value)}
+                          >
+                            <MenuItem value='male'>Тийм</MenuItem>
+                            <MenuItem value='female'>Үгүй</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          type='number'
+                          label='Хөдөлмөр алдалтын хоног'
+                          placeholder='Хөдөлмөр алдалтын хоног'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <FormControl fullWidth>
+                          <InputLabel>Эргэж холбогдох шаардлагатай эсэх</InputLabel>
+                          <Select
+                            label='Эргэж холбогдох шаардлагатай эсэх'
+                            // value={formData.country}
+                            // onChange={e => handleFormChange('country', e.target.value)}
+                          >
+                            <MenuItem value='male'>Тийм</MenuItem>
+                            <MenuItem value='female'>Үгүй</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Шалтгаан'
+                          placeholder='Шалтгаан'
                           // value={formData.address}
                           // onChange={e => handleFormChange('address', e.target.value)}
                         />
@@ -301,8 +432,8 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Нэр'
-                          placeholder='Нэр'
+                          label='Ерөнхий төрөл'
+                          placeholder='Ерөнхий төрөл'
                           // value={formData.firstName}
                           // onChange={e => handleFormChange('firstName', e.target.value)}
                         />
@@ -310,8 +441,8 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Овог'
-                          placeholder='Овог'
+                          label='Ерөнхий төрөл код'
+                          placeholder='Ерөнхий төрөл код'
                           // value={formData.lastName}
                           // onChange={e => handleFormChange('lastName', e.target.value)}
                         />
@@ -319,18 +450,17 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          type='email'
-                          label='И-Мэйл'
+                          label='Төрөл'
                           // value={formData.email}
-                          placeholder='И-Мэйл'
+                          placeholder='Төрөл'
                           // onChange={e => handleFormChange('email', e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Нас'
-                          placeholder='Нас'
+                          label='Төрөл код'
+                          placeholder='Төрөл код'
                           // value={formData.organization}
                           // onChange={e => handleFormChange('organization', e.target.value)}
                         />
@@ -338,10 +468,9 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          type='number'
-                          label='Утасны дугаар'
+                          label='Дэд төрөл'
                           // value={formData.number}
-                          placeholder='Утасны дугаар'
+                          placeholder='Дэд төрөл'
                           // onChange={e => handleFormChange('number', e.target.value)}
                           // InputProps={{ startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment> }}
                         />
@@ -349,30 +478,17 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Гэрийн хаяг'
-                          placeholder='Гэрийн хаяг'
+                          label='Дэд төрөл код'
+                          placeholder='Дэд төрөл код'
                           // value={formData.address}
                           // onChange={e => handleFormChange('address', e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <FormControl fullWidth>
-                          <InputLabel>Хүйс</InputLabel>
-                          <Select
-                            label='Хүйс'
-                            // value={formData.country}
-                            // onChange={e => handleFormChange('country', e.target.value)}
-                          >
-                            <MenuItem value='male'>Эр</MenuItem>
-                            <MenuItem value='female'>Эм</MenuItem>
-                          </Select>
-                        </FormControl>
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Регистрийн дугаар'
-                          placeholder='Регистрийн дугаар'
+                          label='Өгөгдөл'
+                          placeholder='Өгөгдөл'
                           // value={formData.address}
                           // onChange={e => handleFormChange('address', e.target.value)}
                         />
@@ -396,8 +512,8 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Нэр'
-                          placeholder='Нэр'
+                          label='Эмчилгээний тоо'
+                          placeholder='Эмчилгээний тоо'
                           // value={formData.firstName}
                           // onChange={e => handleFormChange('firstName', e.target.value)}
                         />
@@ -405,8 +521,8 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Овог'
-                          placeholder='Овог'
+                          label='Ямар эрхтэнд'
+                          placeholder='Ямар эрхтэнд'
                           // value={formData.lastName}
                           // onChange={e => handleFormChange('lastName', e.target.value)}
                         />
@@ -414,18 +530,17 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          type='email'
-                          label='И-Мэйл'
+                          label='Зай'
                           // value={formData.email}
-                          placeholder='И-Мэйл'
+                          placeholder='Зай'
                           // onChange={e => handleFormChange('email', e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Нас'
-                          placeholder='Нас'
+                          label='Тун'
+                          placeholder='Тун'
                           // value={formData.organization}
                           // onChange={e => handleFormChange('organization', e.target.value)}
                         />
@@ -433,10 +548,9 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          type='number'
-                          label='Утасны дугаар'
+                          label='Үргэлжлэх хугацаа'
                           // value={formData.number}
-                          placeholder='Утасны дугаар'
+                          placeholder='Үргэлжлэх хугацаа'
                           // onChange={e => handleFormChange('number', e.target.value)}
                           // InputProps={{ startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment> }}
                         />
@@ -444,30 +558,27 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Гэрийн хаяг'
-                          placeholder='Гэрийн хаяг'
+                          label='Талбай'
+                          placeholder='Талбай'
                           // value={formData.address}
                           // onChange={e => handleFormChange('address', e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <FormControl fullWidth>
-                          <InputLabel>Хүйс</InputLabel>
-                          <Select
-                            label='Хүйс'
-                            // value={formData.country}
-                            // onChange={e => handleFormChange('country', e.target.value)}
-                          >
-                            <MenuItem value='male'>Эр</MenuItem>
-                            <MenuItem value='female'>Эм</MenuItem>
-                          </Select>
-                        </FormControl>
+                        <TextField
+                          fullWidth
+                          label='Давтамж'
+                          placeholder='Давтамж'
+                          // value={formData.address}
+                          // onChange={e => handleFormChange('address', e.target.value)}
+                        />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Регистрийн дугаар'
-                          placeholder='Регистрийн дугаар'
+                          type = 'number'
+                          label='Хэдэн удаа'
+                          placeholder='Хэдэн удаа'
                           // value={formData.address}
                           // onChange={e => handleFormChange('address', e.target.value)}
                         />
