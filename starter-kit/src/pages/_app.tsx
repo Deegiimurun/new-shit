@@ -14,6 +14,8 @@ import {AuthProvider} from 'src/context/AuthContext'
 import {SettingsConsumer, SettingsProvider} from 'src/@core/context/settingsContext'
 import ReactHotToast from 'src/@core/styles/libs/react-hot-toast'
 import {createEmotionCache} from 'src/@core/utils/create-emotion-cache'
+import 'react-perfect-scrollbar/dist/css/styles.css'
+import 'src/iconify-bundle/icons-bundle-react'
 import '../../styles/globals.css'
 import {SessionContextProvider} from "@supabase/auth-helpers-react";
 import {createBrowserSupabaseClient} from "@supabase/auth-helpers-nextjs";

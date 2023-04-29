@@ -97,11 +97,6 @@ const CheckoutWizard = () => {
   // ** States
   const [activeStep, setActiveStep] = useState<number>(0)
 
-  // Handle Stepper
-  const handleNext = () => {
-    setActiveStep(activeStep + 1)
-  }
-
   const getStepContent = (step: number) => {
     switch (step) {
       case 0:
@@ -201,7 +196,7 @@ const CheckoutWizard = () => {
         )
       case 1:
         return (
-          <Grid container spacing={6}>
+          <Grid height='100%' container spacing={6}>
             {/* Account Details Card */}
             <Grid item xs={12}>
               <Card>
@@ -296,7 +291,7 @@ const CheckoutWizard = () => {
         )
       case 2:
         return (
-          <Grid container spacing={6}>
+          <Grid height='100%' container spacing={6}>
             {/* Account Details Card */}
             <Grid item xs={12}>
               <Card>
@@ -391,7 +386,7 @@ const CheckoutWizard = () => {
         )
       case 3:
         return (
-          <Grid container spacing={6}>
+          <Grid height='100%' container spacing={6}>
             {/* Account Details Card */}
             <Grid item xs={12}>
               <Card>
