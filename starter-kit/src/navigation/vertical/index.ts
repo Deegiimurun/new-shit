@@ -27,6 +27,25 @@ const navigation = (): VerticalNavItemsType => {
       icon: 'mdi:file-document-box',
       role: 'client'
     },
+    {
+      title: 'Нүүр',
+      path: '/doctor/home',
+      icon: 'mdi:file-document-box',
+      role: 'doctor'
+    },
+    {
+      title: 'Бүх өвчтөн',
+      path: '/doctor/all_patient',
+      icon: 'mdi:clock-outline',
+      role: 'doctor'
+    },
+    {
+      title: 'Цаг авсан өвчтөн',
+      path: '/doctor/appointment_patient',
+      icon: 'mdi:file-document-box',
+      role: 'doctor'
+    },
+
   ]
 }
 
