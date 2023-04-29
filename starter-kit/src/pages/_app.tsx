@@ -14,20 +14,12 @@ import {AuthProvider} from 'src/context/AuthContext'
 import {SettingsConsumer, SettingsProvider} from 'src/@core/context/settingsContext'
 import ReactHotToast from 'src/@core/styles/libs/react-hot-toast'
 import {createEmotionCache} from 'src/@core/utils/create-emotion-cache'
-import 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css'
-import 'prismjs/components/prism-jsx'
-import 'prismjs/components/prism-tsx'
-import 'react-perfect-scrollbar/dist/css/styles.css'
-import 'src/iconify-bundle/icons-bundle-react'
 import '../../styles/globals.css'
 import {SessionContextProvider} from "@supabase/auth-helpers-react";
 import {createBrowserSupabaseClient} from "@supabase/auth-helpers-nextjs";
 import GuestGuard from "../@core/components/auth/GuestGuard";
 import Spinner from "../@core/components/spinner";
 import AuthGuard from "../@core/components/auth/AuthGuard";
-import {store} from "../store";
-import {Provider} from "react-redux";
 
 // ** Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {
@@ -86,7 +78,6 @@ const App = (props: ExtendedAppProps) => {
       supabaseClient={supabaseClient}
       initialSession={pageProps.initialSession}
     >
-      <Provider store={store}>
         <CacheProvider value={emotionCache}>
           <Head>
             <title>{`${themeConfig.appName}`}</title>
@@ -113,7 +104,6 @@ const App = (props: ExtendedAppProps) => {
             </SettingsProvider>
           </AuthProvider>
         </CacheProvider>
-      </Provider>
     </SessionContextProvider>
   )
 }
