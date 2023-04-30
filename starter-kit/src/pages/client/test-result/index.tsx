@@ -23,6 +23,7 @@ export type Result = {
   country: string
   contact: string
   avatarColor?: string
+  invoiceStatus: string
   issuedDate: string
   companyEmail: string
   balance: string | number

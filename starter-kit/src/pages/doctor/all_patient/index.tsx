@@ -9,7 +9,6 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import { DataGrid } from '@mui/x-data-grid'
 import Icon from 'src/@core/components/icon'
-import CustomChip from 'src/@core/components/mui/chip'
 
 export type Result = {
   id: number
@@ -22,6 +21,7 @@ export type Result = {
   company: string
   country: string
   contact: string
+  invoiceStatus: string
   avatarColor?: string
   issuedDate: string
   companyEmail: string
