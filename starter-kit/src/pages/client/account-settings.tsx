@@ -59,13 +59,11 @@ const TabAccount = () => {
   const [formData, setFormData] = useState<Data>(initialData)
 
   const supabase = useSupabaseClient();
+  const auth = useAuth();
 
   useEffect(() => {
-    supabase.auth.getUser().then(user => {
-      console.log(user)
-      setFormData({...initialData, ...(user.data.user?.user_metadata as Data)})
-    })
-  }, [supabase.auth])
+    setFormData({...initialData, ...(auth.user?.user_metadata as Data)})
+  }, [auth])
 
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();

@@ -84,10 +84,9 @@ const UserDropdown = (props: Props) => {
   return (
     <>
       <Avatar
-        alt='John Doe'
         onClick={handleDropdownOpen}
         sx={{width: 40, height: 40}}
-        src='/images/avatars/1.png'
+        alt='avatar' src={user?.user_metadata.imageUrl}
       />
       <Menu
         anchorEl={anchorEl}
@@ -99,9 +98,9 @@ const UserDropdown = (props: Props) => {
       >
         <Box sx={{pt: 2, pb: 3, px: 4}}>
           <Box sx={{display: 'flex', alignItems: 'center'}}>
-            <Avatar alt='John Doe' src='/images/avatars/1.png' sx={{width: '2.5rem', height: '2.5rem'}}/>
+            <Avatar alt='avatar' src={user?.user_metadata.imageUrl} sx={{width: '2.5rem', height: '2.5rem'}}/>
             <Box sx={{display: 'flex', ml: 3, alignItems: 'flex-start', flexDirection: 'column'}}>
-              <Typography sx={{fontWeight: 600}}>John Doe</Typography>
+              <Typography sx={{fontWeight: 600}}>{`${user?.user_metadata.firstName} ${user?.user_metadata.lastName}`}</Typography>
               <Typography variant='body2' sx={{fontSize: '0.8rem', color: 'text.disabled'}}>
                 {(() => {
                   if (user?.user_metadata.role === 'doctor') return 'Эмч'

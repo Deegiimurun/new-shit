@@ -29,13 +29,15 @@ const AuthProvider = ({children}: Props) => {
   useEffect(() => {
       const initAuth = async (): Promise<void> => {
         setLoading(true);
-        const session = await supabase.auth.getSession();
-        if (session.data.session) {
-          setUser(session.data.session.user)
+
+        const {data: {user}} = await supabase.auth.getUser();
+        if (user) {
+          setUser(user);
         } else {
           setUser(null);
           await router.replace('/login')
         }
+
         setLoading(false);
       }
 
