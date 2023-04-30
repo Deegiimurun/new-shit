@@ -113,14 +113,7 @@ const CheckoutWizard = () => {
     if (!appointment) return;
 
     const initUzleg = async () => {
-      if (!appointment['uzleg_id']) {
-        const {data} = await supabase
-          .from('uzleg')
-          .insert({}).select('*');
-        if (!data) return;
-        await supabase.from('tsag_burtgel').update({'uzleg_id': data[0]['id']}).eq('id', appointment['id'])
-        setUzleg(data[0])
-      } else {
+      if (appointment['uzleg_id']) {
         const {data} = await supabase
           .from('uzleg')
           .select()
@@ -131,14 +124,7 @@ const CheckoutWizard = () => {
     }
 
     const initOnosh = async () => {
-      if (!appointment['onosh_id']) {
-        const {data} = await supabase
-          .from('onosh')
-          .insert({}).select('*');
-        if (!data) return;
-        await supabase.from('tsag_burtgel').update({'onosh_id': data[0]['id']}).eq('id', appointment['id'])
-        setOnosh(data[0])
-      } else {
+      if (appointment['onosh_id']) {
         const {data} = await supabase
           .from('onosh')
           .select()
@@ -149,14 +135,7 @@ const CheckoutWizard = () => {
     }
 
     const initEmchilgee = async () => {
-      if (!appointment['emchilgee_id']) {
-        const {data} = await supabase
-          .from('emchilgee')
-          .insert({}).select('*');
-        if (!data) return;
-        await supabase.from('tsag_burtgel').update({'emchilgee_id': data[0]['id']}).eq('id', appointment['id'])
-        setEmchilgee(data[0])
-      } else {
+      if (appointment['emchilgee_id']) {
         const {data} = await supabase
           .from('emchilgee')
           .select()
@@ -167,14 +146,7 @@ const CheckoutWizard = () => {
     }
 
     const initAminUzuulelt = async () => {
-      if (!appointment['amin_uzuulelt_id']) {
-        const {data} = await supabase
-          .from('amin_uzuulelt')
-          .insert({}).select('*');
-        if (!data) return;
-        await supabase.from('tsag_burtgel').update({'amin_uzuulelt_id': data[0]['id']}).eq('id', appointment['id'])
-        setAminUzuulelt(data[0])
-      } else {
+      if (appointment['amin_uzuulelt_id']) {
         const {data} = await supabase
           .from('amin_uzuulelt')
           .select()
@@ -194,148 +166,148 @@ const CheckoutWizard = () => {
     switch (step) {
       case 0:
         return (<Grid height='100%' container spacing={6}>
-            <Grid item xs={12}>
-              <Card>
-                <form>
-                  <CardContent>
-                    <Grid container spacing={5}>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Ухаан санаа'
-                          placeholder='Ухаан санаа'
-                          value={aminUzuulelt?.['uhaan_sanaa'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Пульс'
-                          placeholder='Пульс'
-                          value={aminUzuulelt?.['pulis'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Амьсгалын тоо'
-                          value={aminUzuulelt?.['amisgaliin_too'] || ''}
-                          placeholder='Амьсгалын тоо'
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Биеийн температур'
-                          value={aminUzuulelt?.['biyiin_temperature'] || ''}
-                          placeholder='Биеийн температур'
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Баруун даралт дээд'
-                          placeholder='Баруун даралт дээд'
-                          value={aminUzuulelt?.['baruun_daralt_deed'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Баруун даралт доод'
-                          value={aminUzuulelt?.['baruun_daralt_dood'] || ''}
-                          placeholder='Баруун даралт доод'
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Баруун даралт дундаж'
-                          placeholder='Баруун даралт дундаж'
-                          value={aminUzuulelt?.['baruun_daralt_dundaj'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Баруун даралт нэмэлт'
-                          placeholder='Баруун даралт нэмэлт'
-                          value={aminUzuulelt?.['baruun_daralt_nemelt'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Зүүн даралт дээд'
-                          placeholder='Зүүн даралт дээд'
-                          value={aminUzuulelt?.['zuun_daralt_deed'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Зүүн даралт доод'
-                          placeholder='Зүүн даралт доод'
-                          value={aminUzuulelt?.['zuun_daralt_dood'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          type='text'
-                          label='Зүүн даралт дундаж'
-                          placeholder='Зүүн даралт дунда'
-                          value={aminUzuulelt?.['zuun_daralt_dundaj'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          type='text'
-                          label='Зүүн даралт нэмэлт'
-                          placeholder='Зүүн даралт нэмэлт'
-                          value={aminUzuulelt?.['zuun_daralt_nemelt'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          type='text'
-                          label='Сатураци'
-                          placeholder='Сатураци'
-                          value={aminUzuulelt?.['saturatsi'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Өндөр'
-                          placeholder='Өндөр'
-                          value={aminUzuulelt?.['undur'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Жин'
-                          placeholder='Жин'
-                          value={aminUzuulelt?.['jin'] || ''}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='БЖИ'
-                          placeholder='БЖИ'
-                          value={aminUzuulelt?.['bji'] || ''}
-                        />
-                      </Grid>
+          <Grid item xs={12}>
+            <Card>
+              <form>
+                <CardContent>
+                  <Grid container spacing={5}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Ухаан санаа'
+                        placeholder='Ухаан санаа'
+                        value={aminUzuulelt?.['uhaan_sanaa'] || ''}
+                      />
                     </Grid>
-                  </CardContent>
-                </form>
-              </Card>
-            </Grid>
-          </Grid>)
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Пульс'
+                        placeholder='Пульс'
+                        value={aminUzuulelt?.['pulis'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Амьсгалын тоо'
+                        value={aminUzuulelt?.['amisgaliin_too'] || ''}
+                        placeholder='Амьсгалын тоо'
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Биеийн температур'
+                        value={aminUzuulelt?.['biyiin_temperature'] || ''}
+                        placeholder='Биеийн температур'
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Баруун даралт дээд'
+                        placeholder='Баруун даралт дээд'
+                        value={aminUzuulelt?.['baruun_daralt_deed'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Баруун даралт доод'
+                        value={aminUzuulelt?.['baruun_daralt_dood'] || ''}
+                        placeholder='Баруун даралт доод'
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Баруун даралт дундаж'
+                        placeholder='Баруун даралт дундаж'
+                        value={aminUzuulelt?.['baruun_daralt_dundaj'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Баруун даралт нэмэлт'
+                        placeholder='Баруун даралт нэмэлт'
+                        value={aminUzuulelt?.['baruun_daralt_nemelt'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Зүүн даралт дээд'
+                        placeholder='Зүүн даралт дээд'
+                        value={aminUzuulelt?.['zuun_daralt_deed'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Зүүн даралт доод'
+                        placeholder='Зүүн даралт доод'
+                        value={aminUzuulelt?.['zuun_daralt_dood'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        type='text'
+                        label='Зүүн даралт дундаж'
+                        placeholder='Зүүн даралт дунда'
+                        value={aminUzuulelt?.['zuun_daralt_dundaj'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        type='text'
+                        label='Зүүн даралт нэмэлт'
+                        placeholder='Зүүн даралт нэмэлт'
+                        value={aminUzuulelt?.['zuun_daralt_nemelt'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        type='text'
+                        label='Сатураци'
+                        placeholder='Сатураци'
+                        value={aminUzuulelt?.['saturatsi'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Өндөр'
+                        placeholder='Өндөр'
+                        value={aminUzuulelt?.['undur'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='Жин'
+                        placeholder='Жин'
+                        value={aminUzuulelt?.['jin'] || ''}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label='БЖИ'
+                        placeholder='БЖИ'
+                        value={aminUzuulelt?.['bji'] || ''}
+                      />
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </form>
+            </Card>
+          </Grid>
+        </Grid>)
       case 1:
         return (
           <Grid height='100%' container spacing={6}>
