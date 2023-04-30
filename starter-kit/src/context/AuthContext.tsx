@@ -11,7 +11,8 @@ const defaultProvider: AuthValuesType = {
   setUser: () => null,
   setLoading: () => Boolean,
   login: () => Promise.resolve(),
-  logout: () => Promise.resolve()
+  logout: () => Promise.resolve(),
+  signUp: () => Promise.resolve(),
 }
 
 const AuthContext = createContext(defaultProvider)
@@ -30,7 +31,7 @@ const AuthProvider = ({children}: Props) => {
       const initAuth = async (): Promise<void> => {
         setLoading(true);
 
-        const {data: {session}, error} = await supabase.auth.getSession();
+        const {data: {session}} = await supabase.auth.getSession();
 
         if (session?.user) {
           setUser(session.user);
@@ -65,6 +66,29 @@ const AuthProvider = ({children}: Props) => {
     await router.push(redirectURL as string)
     setUser(data.user);
   }
+  const handleSignUp = async (params: LoginParams, errorCallback?: ErrCallbackType) => {
+    const {error} = await supabase.auth.signUp({
+      email: params.email,
+      password: params.password,
+      options: {
+        data: {
+          role: 'client'
+        }
+      }
+    });
+
+    if (errorCallback && error) {
+      errorCallback(error);
+
+      return;
+    }
+
+    const returnUrl = router.query.returnUrl;
+    const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : `/`;
+
+    await router.push(redirectURL as string)
+  }
+
 
   const handleLogout = async () => {
     setUser(null)
@@ -78,7 +102,8 @@ const AuthProvider = ({children}: Props) => {
     setUser,
     setLoading,
     login: handleLogin,
-    logout: handleLogout
+    logout: handleLogout,
+    signUp: handleSignUp
   }
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>

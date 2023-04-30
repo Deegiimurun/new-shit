@@ -76,7 +76,11 @@ const Register = () => {
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault()
-    console.log(data)
+
+    auth.signUp({
+      email: data?.email,
+      password: data?.password,
+    })
   }
 
   const {skin} = settings
