@@ -100,7 +100,7 @@ const PatientList = () => {
       renderCell: ({ row }: CellType) => (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Tooltip title='Харах'>
-            <IconButton size='small' component={Link} href={`/nurse/all_patient/${row.id}`}>
+            <IconButton size='small' component={Link} href={`/doctor/all_patient/${row.id}`}>
               <Icon icon='mdi:eye-outline' fontSize={20} />
             </IconButton>
           </Tooltip>

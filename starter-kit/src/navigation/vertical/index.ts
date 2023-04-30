@@ -4,12 +4,6 @@ import { VerticalNavItemsType } from 'src/@core/layouts/types'
 const navigation = (): VerticalNavItemsType => {
   return [
     {
-      title: 'Нүүр хуудас',
-      path: '/client/home',
-      icon: 'mdi:home-outline',
-      role: 'client'
-    },
-    {
       title: 'Тохиргоо',
       path: '/client/account-settings',
       icon: 'mdi:settings-outline',
@@ -28,12 +22,6 @@ const navigation = (): VerticalNavItemsType => {
       role: 'client'
     },
     {
-      title: 'Нүүр',
-      path: '/doctor/home',
-      icon: 'mdi:file-document-box',
-      role: 'doctor'
-    },
-    {
       title: 'Цаг авсан өвчтөн',
       path: '/doctor/appointment_patient',
       icon: 'mdi:file-document-box',
@@ -50,12 +38,6 @@ const navigation = (): VerticalNavItemsType => {
       path: '/doctor/insert',
       icon: 'mdi:clock-outline',
       role: 'doctor'
-    },
-    {
-      title: 'Нүүр',
-      path: '/nurse/home',
-      icon: 'mdi:file-document-box',
-      role: 'nurse'
     },
     {
       title: 'Бүх өвчтөн',

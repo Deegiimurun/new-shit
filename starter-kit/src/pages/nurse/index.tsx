@@ -1,7 +1,7 @@
-import {useRouter} from "next/router";
+import { useRouter } from 'next/router'
 
 export default function Doctor() {
-  const router = useRouter();
+  const router = useRouter()
 
-  router.push('/nurse/home')
+  router.push('/nurse/all_patient/index.tsx')
 }
