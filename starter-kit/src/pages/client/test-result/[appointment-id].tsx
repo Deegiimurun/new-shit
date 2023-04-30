@@ -84,7 +84,7 @@ const Stepper = styled(MuiStepper)<StepperProps>(({theme}) => ({
   }
 }))
 
-const CheckoutWizard = () => {
+const TestResult = () => {
   const [activeStep, setActiveStep] = useState<number>(0)
   const [appointment, setAppointment] = useState<any>()
   const [aminUzuulelt, setAminUzuulelt] = useState<any>({})
@@ -664,4 +664,4 @@ const CheckoutWizard = () => {
   )
 }
 
-export default CheckoutWizard
+export default TestResult

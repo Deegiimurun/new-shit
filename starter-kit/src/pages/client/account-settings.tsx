@@ -54,7 +54,7 @@ const ButtonStyled = styled(Button)<ButtonProps & { component?: ElementType; htm
     textAlign: 'center'
   }
 }))
-const TabAccount = () => {
+const Settings = () => {
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState<Data>(initialData)
 
@@ -219,4 +219,4 @@ const TabAccount = () => {
   )
 }
 
-export default TabAccount
+export default Settings

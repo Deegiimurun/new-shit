@@ -53,7 +53,7 @@ const AppCalendar = () => {
       let title = ''
       const className = 'enabled-cell'
 
-      if (row['amin_uzuulelt_id'] && row['uzleg_id']) {
+      if (row['uzleg_id']) {
         status = 'finished';
         title = 'Бүртгэл хийгдсэн'
       } else {
@@ -102,7 +102,7 @@ const AppCalendar = () => {
       return [`bg-${colorName} `]
     },
     eventClick({event: clickedEvent}: any) {
-      router.replace(`/doctor/insert?appointment-id=${clickedEvent._def.publicId}`)
+      router.push(`/doctor/insert?appointment-id=${clickedEvent._def.publicId}`)
     },
 
     direction

@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 
-const Doctor = () => {
+const Client = () => {
   return (
     <Box>
 
@@ -8,4 +8,4 @@ const Doctor = () => {
   )
 }
 
-export default Doctor
+export default Client

@@ -85,7 +85,7 @@ const ImgStyled = styled('img')(({ theme }) => ({
   marginRight: theme.spacing(5)
 }))
 
-const CheckoutWizard = () => {
+const Insert = () => {
   const [activeStep, setActiveStep] = useState<number>(0)
   const [client, setClient] = useState<any>()
   const [appointment, setAppointment] = useState<any>()
@@ -168,8 +168,24 @@ const CheckoutWizard = () => {
       }
     }
 
+    const initTuhuurumk = async () => {
+      if (!appointment['tuhuurumj_id']) {
+        const { data } = await supabase.from('tuhuurumj').insert({}).select('*')
+        if (!data) return
+        await supabase.from('tsag_burtgel').update({ tuhuurumj_id: data[0]['id'] }).eq('id', appointment['id'])
+        setEmchilgeeniiBurtgel(data[0])
+      } else {
+        const { data } = await supabase.from('tuhuurumj').select().eq('id', appointment['tuhuurumj_id'])
+        if (!data) return
+        setEmchilgeeniiBurtgel(data[0])
+      }
+    }
+
     initAminUzuulelt()
+    initTuhuurumk()
   }, [appointment])
+
+  console.log(appointment)
 
   const getStepContent = (step: number) => {
     switch (step) {
@@ -460,11 +476,11 @@ const CheckoutWizard = () => {
                           sx={{ mr: 4 }}
                           onClick={async () => {
                             setAminUzuuleltLoading(true)
-                            const a = await supabase
+                            await supabase
                               .from('amin_uzuulelt')
                               .update(aminUzuulelt)
                               .eq('id', aminUzuulelt.id)
-                            console.log(a)
+                            appointment
                             setAminUzuuleltLoading(false)
                           }}
                         >
@@ -527,12 +543,11 @@ const CheckoutWizard = () => {
                           sx={{ mr: 4 }}
                           onClick={async () => {
                             setEmchilgeeniiBurtgelLoading(true)
-                            const a = await supabase
-                              .from('amin_uzuulelt')
-                              .update(aminUzuulelt)
-                              .eq('id', aminUzuulelt.id)
-                            console.log(a)
-                            emchilgeeniiBurtgelLoading(false)
+                            await supabase
+                              .from('tuhuurumj')
+                              .update(emchilgeeniiBurtgel)
+                              .eq('id', emchilgeeniiBurtgel.id)
+                            setEmchilgeeniiBurtgelLoading(false)
                           }}
                         >
                           Хадгалах
@@ -580,4 +595,4 @@ const CheckoutWizard = () => {
   )
 }
 
-export default CheckoutWizard
+export default Insert

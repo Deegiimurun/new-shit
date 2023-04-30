@@ -35,7 +35,7 @@ type EventType = {
 }
 
 
-const AppCalendar = () => {
+const Appointment = () => {
   const [open, setOpen] = useState(false)
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [events, setEvents] = useState<Array<EventType>>([])
@@ -52,7 +52,6 @@ const AppCalendar = () => {
     const tempEvents: Array<EventType> = [];
 
     data?.forEach(row => {
-      console.log(row)
       const start = new Date(row.date)
       const end = new Date(row.date);
       end.setMinutes(start.getMinutes() + 30)
@@ -207,4 +206,4 @@ const AppCalendar = () => {
   )
 }
 
-export default AppCalendar
+export default Appointment

@@ -11,6 +11,7 @@ import {DataGrid} from '@mui/x-data-grid'
 import Icon from 'src/@core/components/icon'
 import CustomChip from 'src/@core/components/mui/chip'
 import {useSupabaseClient} from "@supabase/auth-helpers-react";
+import {useRouter} from "next/router";
 
 export type Result = {
   id: string
@@ -63,13 +64,14 @@ const TestResults = () => {
   const [pageSize, setPageSize] = useState<number>(20)
   const [events, setEvents] = useState<Array<Result>>([])
   const supabase = useSupabaseClient()
+  const router = useRouter()
 
   useEffect(() => {
     refreshEvents()
   }, [])
 
   const refreshEvents = async () => {
-    const {data} = await supabase.from('tsag_burtgel').select('*')
+    const {data} = await supabase.from('tsag_burtgel').select('*').eq('client_id', router.query['client-id'])
     const tempEvents: Array<Result> = [];
 
     data?.forEach(row => {
@@ -77,7 +79,7 @@ const TestResults = () => {
 
       let status = ''
 
-      if (row['amin_uzuulelt_id'] && row['uzleg_id']) {
+      if (row['amin_uzuulelt_id']) {
         status = 'finished';
       } else {
         status = 'inprogress';
@@ -85,7 +87,7 @@ const TestResults = () => {
 
       tempEvents.push({
         id: row.id,
-        date: `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate()}
+        date: `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 10 ? '0' + date.getDate() : date.getDate()}
                ${date.getHours() < 10 ? '0' + date.getHours() : date.getHours()}:${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`,
         status
       });
@@ -105,7 +107,7 @@ const TestResults = () => {
       renderCell: ({row}: CellType) => (
         <Box sx={{display: 'flex', alignItems: 'center'}}>
           <Tooltip title='Харах'>
-            <IconButton size='small' component={Link} href={`/client/test-result/${row.id}`}>
+            <IconButton size='small' component={Link} href={`/nurse/insert?appointment-id=${row.id}`}>
               <Icon icon='mdi:eye-outline' fontSize={20}/>
             </IconButton>
           </Tooltip>

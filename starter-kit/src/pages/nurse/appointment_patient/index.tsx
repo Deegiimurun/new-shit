@@ -32,7 +32,7 @@ type EventType = {
 }
 
 
-const AppCalendar = () => {
+const Appointment = () => {
   const [events, setEvents] = useState<Array<EventType>>([])
   const {settings} = useSettings()
   const router = useRouter()
@@ -53,7 +53,7 @@ const AppCalendar = () => {
       let title = ''
       const className = 'enabled-cell'
 
-      if (row['amin_uzuulelt_id'] && row['uzleg_id']) {
+      if (row['amin_uzuulelt_id']) {
         status = 'finished';
         title = 'Бүртгэл хийгдсэн'
       } else {
@@ -102,7 +102,7 @@ const AppCalendar = () => {
       return [`bg-${colorName} `]
     },
     eventClick({event: clickedEvent}: any) {
-      router.replace(`/nurse/insert?appointment-id=${clickedEvent._def.publicId}`)
+      router.push(`/nurse/insert?appointment-id=${clickedEvent._def.publicId}`)
     },
 
     direction
@@ -137,4 +137,4 @@ const AppCalendar = () => {
   )
 }
 
-export default AppCalendar
+export default Appointment

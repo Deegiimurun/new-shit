@@ -113,12 +113,20 @@ const UserDropdown = (props: Props) => {
           </Box>
         </Box>
         <Divider/>
-        <MenuItem sx={{p: 0}} onClick={() => {router.push('/client/account-settings')}}>
-          <Box sx={styles}>
-            <Icon icon='mdi:cog-outline'/>
-            Тохиргоо
-          </Box>
-        </MenuItem>
+        {(() => {
+          if (user?.user_metadata.role === 'doctor') return
+          if (user?.user_metadata.role === 'nurse') return
+
+          return (
+            <MenuItem sx={{p: 0}} onClick={() => {router.push('/client/account-settings')}}>
+              <Box sx={styles}>
+                <Icon icon='mdi:cog-outline'/>
+                Тохиргоо
+              </Box>
+            </MenuItem>
+          );
+        })()}
+
         <Divider/>
         <MenuItem
           onClick={handleLogout}

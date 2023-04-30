@@ -93,7 +93,7 @@ const ImgStyled = styled('img')(({theme}) => ({
   marginRight: theme.spacing(5)
 }))
 
-const CheckoutWizard = () => {
+const Insert = () => {
   const [activeStep, setActiveStep] = useState<number>(0)
   const [client, setClient] = useState<any>()
   const [appointment, setAppointment] = useState<any>()
@@ -603,8 +603,8 @@ const CheckoutWizard = () => {
                         <LoadingButton loading={onoshLoading} variant='contained' sx={{mr: 4}}
                                        onClick={async () => {
                                          setOnoshLoading(true);
-                                         const a = await supabase.from('onosh').update(onosh).eq('id', onosh.id)
-                                         console.log(a)
+                                         await supabase.from('onosh').update(onosh).eq('id', onosh.id)
+                                         appointment
                                          setOnoshLoading(false);
                                        }}
                         >
@@ -720,8 +720,8 @@ const CheckoutWizard = () => {
                         <LoadingButton loading={emchilgeeLoading} variant='contained' sx={{mr: 4}}
                                        onClick={async () => {
                                          setEmchilgeeLoading(true);
-                                         const a = await supabase.from('emchilgee').update(emchilgee).eq('id', emchilgee.id)
-                                         console.log(a)
+                                         await supabase.from('emchilgee').update(emchilgee).eq('id', emchilgee.id)
+                                         appointment
                                          setEmchilgeeLoading(false);
                                        }}
                         >
@@ -770,4 +770,4 @@ const CheckoutWizard = () => {
   )
 }
 
-export default CheckoutWizard
+export default Insert
