@@ -11,10 +11,6 @@ import Icon from 'src/@core/components/icon'
 import StepperWrapper from 'src/@core/styles/mui/stepper'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
-import MenuItem from '@mui/material/MenuItem'
 import Box from "@mui/material/Box";
 import {useRouter} from "next/router";
 import {useSupabaseClient} from "@supabase/auth-helpers-react";
@@ -96,9 +92,9 @@ const CheckoutWizard = () => {
 
   useEffect(() => {
       const checkAppointment = async () => {
-        if (!router.query['appointmed-id']) return
+        if (!router.query['appointment-id']) return
 
-        const appointmentResult = await supabase.from('tsag_burtgel').select('*').eq('id', router.query['appointmed-id'])
+        const appointmentResult = await supabase.from('tsag_burtgel').select('*').eq('id', router.query['appointment-id'])
         if (!appointmentResult.data) return
 
         setAppointment(appointmentResult.data[0])
@@ -457,7 +453,7 @@ const CheckoutWizard = () => {
                         <LoadingButton loading={aminUzuuleltLoading} variant='contained' sx={{mr: 4}}
                                        onClick={async () => {
                                          setAminUzuuleltLoading(true);
-                                         const a = await supabase.from('aminUzuulelt').update(aminUzuulelt).eq('id', aminUzuulelt.id)
+                                         const a = await supabase.from('amin_uzuulelt').update(aminUzuulelt).eq('id', aminUzuulelt.id)
                                          console.log(a)
                                          setAminUzuuleltLoading(false);
                                        }}

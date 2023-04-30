@@ -102,7 +102,7 @@ const AppCalendar = () => {
       return [`bg-${colorName} `]
     },
     eventClick({event: clickedEvent}: any) {
-      router.replace(`/doctor/insert?appointmed-id=${clickedEvent._def.publicId}`)
+      router.replace(`/doctor/insert?appointment-id=${clickedEvent._def.publicId}`)
     },
 
     direction

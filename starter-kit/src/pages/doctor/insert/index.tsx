@@ -108,9 +108,9 @@ const CheckoutWizard = () => {
 
   useEffect(() => {
       const checkAppointment = async () => {
-        if (!router.query['appointmed-id']) return
+        if (!router.query['appointment-id']) return
 
-        const appointmentResult = await supabase.from('tsag_burtgel').select('*').eq('id', router.query['appointmed-id'])
+        const appointmentResult = await supabase.from('tsag_burtgel').select('*').eq('id', router.query['appointment-id'])
         if (!appointmentResult.data) return
 
         setAppointment(appointmentResult.data[0])
