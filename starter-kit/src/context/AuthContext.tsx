@@ -30,9 +30,10 @@ const AuthProvider = ({children}: Props) => {
       const initAuth = async (): Promise<void> => {
         setLoading(true);
 
-        const {data: {user}} = await supabase.auth.getUser();
-        if (user) {
-          setUser(user);
+        const {data: {session}, error} = await supabase.auth.getSession();
+
+        if (session?.user) {
+          setUser(session.user);
         } else {
           setUser(null);
           await router.replace('/login')
