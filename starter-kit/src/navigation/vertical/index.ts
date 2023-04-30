@@ -34,15 +34,21 @@ const navigation = (): VerticalNavItemsType => {
       role: 'doctor'
     },
     {
+      title: 'Цаг авсан өвчтөн',
+      path: '/doctor/appointment_patient',
+      icon: 'mdi:file-document-box',
+      role: 'doctor'
+    },
+    {
       title: 'Бүх өвчтөн',
       path: '/doctor/all_patient',
       icon: 'mdi:clock-outline',
       role: 'doctor'
     },
     {
-      title: 'Цаг авсан өвчтөн',
-      path: '/doctor/appointment_patient',
-      icon: 'mdi:file-document-box',
+      title: 'Үзлэг бүртгэх',
+      path: '/doctor/insert',
+      icon: 'mdi:clock-outline',
       role: 'doctor'
     },
     {

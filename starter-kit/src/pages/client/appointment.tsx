@@ -48,7 +48,7 @@ const AppCalendar = () => {
   }, [])
 
   const refreshEvents = async () => {
-    const {data} = await supabase.from('tsag_burtgel').select('*')
+    const {data} = await supabase.from('tsag_burtgel').select('*').neq('type', 'yaraltai')
     const tempEvents: Array<EventType> = [];
 
     data?.forEach(row => {
@@ -65,7 +65,7 @@ const AppCalendar = () => {
         title = 'Цаг авах боломжгүй'
         className = 'disabled-cell'
       } else {
-        if (row['amin_uzuulelt_id']) {
+        if (row['amin_uzuulelt_id'] && row['uzleg_id']) {
           status = 'finished';
           title = 'Дууссан'
         } else {

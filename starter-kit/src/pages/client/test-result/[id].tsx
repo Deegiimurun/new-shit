@@ -71,7 +71,7 @@ const Stepper = styled(MuiStepper)<StepperProps>(({theme}) => ({
         marginRight: theme.spacing(1.5),
         color: theme.palette.text.primary
       },
-      '&.Mui-active, &.Mui-completed': {
+      '&.Mui-active': {
         '& .MuiTypography-root': {
           color: theme.palette.primary.main
         },

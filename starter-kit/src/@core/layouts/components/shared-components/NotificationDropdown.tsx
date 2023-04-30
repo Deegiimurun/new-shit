@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState, SyntheticEvent, , ReactNode } from 'react'
+import { useState, SyntheticEvent, ReactNode } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'

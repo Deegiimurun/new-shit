@@ -53,7 +53,7 @@ const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
         borderWidth: 3,
         borderRadius: 3
       },
-      '&.Mui-active, &.Mui-completed': {
+      '&.Mui-active': {
         '& .MuiStepConnector-line': {
           borderColor: theme.palette.primary.main
         }
