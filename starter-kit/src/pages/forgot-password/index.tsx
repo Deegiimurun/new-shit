@@ -88,8 +88,17 @@ const ForgotPassword = () => {
     <Box className='content-right'>
       {!hidden ? (
         <Box sx={{ flex: 1, display: 'flex', position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
-          <ForgotPasswordIllustrationWrapper>
+          <ForgotPasswordIllustrationWrapper
+            sx={{
+              display: 'flex',
+              justifyContent: 'center'
+            }}
+          >
             <ForgotPasswordIllustration
+              sx={{
+                width: '50%',
+                height: 'auto'
+              }}
               alt='forgot-password-illustration'
               src={`/images/pages/${imageSource}-${theme.palette.mode}.png`}
             />
