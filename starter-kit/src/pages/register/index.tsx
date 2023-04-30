@@ -99,12 +99,15 @@ const Register = () => {
 
   const onSubmit = (data: FormData) => {
     const { email, password } = data
-    auth.login({ email, password }, () => {
-      setError('email', {
-        type: 'manual',
-        message: 'Имэйл эсвэл нууц үгээ дахин шалгана уу.'
-      })
-    })
+
+    console.log(data)
+    //
+    // auth.login({ email, password }, () => {
+    //   setError('email', {
+    //     type: 'manual',
+    //     message: 'Имэйл эсвэл нууц үгээ дахин шалгана уу.'
+    //   })
+    // })
   }
 
   const { skin } = settings
