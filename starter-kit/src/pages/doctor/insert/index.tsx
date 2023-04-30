@@ -99,7 +99,7 @@ const CheckoutWizard = () => {
   const [appointment, setAppointment] = useState<any>()
   const [uzleg, setUzleg] = useState<any>({})
   const [onosh, setOnosh] = useState<any>({})
-  const [emchilgee, setEmgchilgee] = useState<any>({})
+  const [emchilgee, setEmchilgee] = useState<any>({})
   const router = useRouter();
   const supabase = useSupabaseClient();
 
@@ -328,7 +328,7 @@ const CheckoutWizard = () => {
                           label='Үзлэг хийгдсэн огноо'
                           placeholder='Үзлэг хийгдсэн огноо'
                           value={uzleg?.['uzleg_date']}
-                          onChange={e => {setUzleg({...uzleg, date: e.target.value})}}
+                          onChange={e => {setUzleg({...uzleg, uzleg_date: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -337,16 +337,16 @@ const CheckoutWizard = () => {
                           label='Эмчийн үзлэг'
                           placeholder='Эмчийн үзлэг'
                           value={uzleg?.['emchiin_uzleg']}
+                          onChange={e => {setUzleg({...uzleg, emchiin_uzleg: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
                           label='Өвчний учир амбулатори'
-                          // value={formData.email}
+                          value={uzleg?.['uvchnii_uchir']}
                           placeholder='Өвчний учир амбулатори'
-
-                          // onChange={e => handleFormChange('email', e.target.value)}
+                          onChange={e => {setUzleg({...uzleg, uvchnii_uchir: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -354,9 +354,8 @@ const CheckoutWizard = () => {
                           <InputLabel>Өвчлөлтэй эсэх</InputLabel>
                           <Select
                             label='Өвчлөлтэй эсэх'
-
-                            // value={formData.country}
-                            // onChange={e => handleFormChange('country', e.target.value)}
+                            value={uzleg?.['uvchlultei_eseh']}
+                            onChange={e => {setUzleg({...uzleg, uvchlultei_eseh: e.target.value})}}
                           >
                             <MenuItem value='male'>Тийм</MenuItem>
                             <MenuItem value='female'>Үгүй</MenuItem>
@@ -368,20 +367,17 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Үзлэгийн төрөл'
                           placeholder='Үзлэгийн төрөл'
-
-                          // value={formData.organization}
-                          // onChange={e => handleFormChange('organization', e.target.value)}
+                          value={uzleg?.['uzlegiin_turul']}
+                          onChange={e => {setUzleg({...uzleg, uzlegiin_turul: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
                           label='Үндсэн онош'
-                          // value={formData.number}
+                          value={uzleg?.['undsen_onosh']}
+                          onChange={e => {setUzleg({...uzleg, undsen_onosh: e.target.value})}}
                           placeholder='Үндсэн онош'
-
-                          // onChange={e => handleFormChange('number', e.target.value)}
-                          // InputProps={{ startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment> }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -389,9 +385,8 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Өвчний шалтгаан'
                           placeholder='Өвчний шалтгаан'
-
-                          // value={formData.address}
-                          // onChange={e => handleFormChange('address', e.target.value)}
+                          value={uzleg?.['uvchnii_shaltgaan']}
+                          onChange={e => {setUzleg({...uzleg, uvchnii_shaltgaan: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -399,9 +394,8 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Өвчлөл'
                           placeholder='Өвчлөл'
-
-                          // value={formData.address}
-                          // onChange={e => handleFormChange('address', e.target.value)}
+                          value={uzleg?.['uvchlul']}
+                          onChange={e => {setUzleg({...uzleg, uvchlul: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -409,9 +403,8 @@ const CheckoutWizard = () => {
                           <InputLabel>Дээд шатлалд илгээсэн эсэх</InputLabel>
                           <Select
                             label='Дээд шатлалд илгээсэн эсэх'
-
-                            // value={formData.country}
-                            // onChange={e => handleFormChange('country', e.target.value)}
+                            value={uzleg?.['deed_shatlal']}
+                            onChange={e => {setUzleg({...uzleg, deed_shatlal: e.target.value})}}
                           >
                             <MenuItem value='male'>Тийм</MenuItem>
                             <MenuItem value='female'>Үгүй</MenuItem>
@@ -423,9 +416,8 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Хийгдсэн ажилбар'
                           placeholder='Хийгдсэн ажилбар'
-
-                          // value={formData.address}
-                          // onChange={e => handleFormChange('address', e.target.value)}
+                          value={uzleg?.['hiigdsen_ajilbar']}
+                          onChange={e => {setUzleg({...uzleg, hiigdsen_ajilbar: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -433,9 +425,8 @@ const CheckoutWizard = () => {
                           <InputLabel>Хүчирхийлэлд өртсөн эсэх</InputLabel>
                           <Select
                             label='Хүчирхийлэлд өртсөн эсэх'
-
-                            // value={formData.country}
-                            // onChange={e => handleFormChange('country', e.target.value)}
+                            value={uzleg?.['huchirhiilel']}
+                            onChange={e => {setUzleg({...uzleg, huchirhiilel: e.target.value})}}
                           >
                             <MenuItem value='male'>Тийм</MenuItem>
                             <MenuItem value='female'>Үгүй</MenuItem>
@@ -448,9 +439,8 @@ const CheckoutWizard = () => {
                           type='number'
                           label='Хөдөлмөр алдалтын хоног'
                           placeholder='Хөдөлмөр алдалтын хоног'
-
-                          // value={formData.address}
-                          // onChange={e => handleFormChange('address', e.target.value)}
+                          value={uzleg?.['hudulmur_aldalt']}
+                          onChange={e => {setUzleg({...uzleg, hudulmur_aldalt: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -458,9 +448,8 @@ const CheckoutWizard = () => {
                           <InputLabel>Эргэж холбогдох шаардлагатай эсэх</InputLabel>
                           <Select
                             label='Эргэж холбогдох шаардлагатай эсэх'
-
-                            // value={formData.country}
-                            // onChange={e => handleFormChange('country', e.target.value)}
+                            value={uzleg?.['ergej_holbogdoh']}
+                            onChange={e => {setUzleg({...uzleg, ergej_holbogdoh: e.target.value})}}
                           >
                             <MenuItem value='male'>Тийм</MenuItem>
                             <MenuItem value='female'>Үгүй</MenuItem>
@@ -472,9 +461,8 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Шалтгаан'
                           placeholder='Шалтгаан'
-
-                          // value={formData.address}
-                          // onChange={e => handleFormChange('address', e.target.value)}
+                          value={uzleg?.['shaltgaan']}
+                            onChange={e => {setUzleg({...uzleg, shaltgaan: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -512,9 +500,8 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Ерөнхий төрөл'
                           placeholder='Ерөнхий төрөл'
-
-                          // value={formData.firstName}
-                          // onChange={e => handleFormChange('firstName', e.target.value)}
+                          value={onosh?.['eronhii_turul']}
+                          onChange={e => {setOnosh({...onosh, eronhii_turul: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -522,19 +509,17 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Ерөнхий төрөл код'
                           placeholder='Ерөнхий төрөл код'
-
-                          // value={formData.lastName}
-                          // onChange={e => handleFormChange('lastName', e.target.value)}
+                          value={onosh?.['eronhii_turul_kod']}
+                          onChange={e => {setOnosh({...onosh, eronhii_turul_kod: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
                           label='Төрөл'
-                          // value={formData.email}
+                          value={onosh?.['turul']}
+                          onChange={e => {setOnosh({...onosh, turul: e.target.value})}}
                           placeholder='Төрөл'
-
-                          // onChange={e => handleFormChange('email', e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -542,20 +527,17 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Төрөл код'
                           placeholder='Төрөл код'
-
-                          // value={formData.organization}
-                          // onChange={e => handleFormChange('organization', e.target.value)}
+                          value={onosh?.['turul_kod']}
+                          onChange={e => {setOnosh({...onosh, turul_kod: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
                           label='Дэд төрөл'
-                          // value={formData.number}
+                          value={onosh?.['ded_turul']}
+                          onChange={e => {setOnosh({...onosh, ded_turul: e.target.value})}}
                           placeholder='Дэд төрөл'
-
-                          // onChange={e => handleFormChange('number', e.target.value)}
-                          // InputProps={{ startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment> }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -563,9 +545,8 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Дэд төрөл код'
                           placeholder='Дэд төрөл код'
-
-                          // value={formData.address}
-                          // onChange={e => handleFormChange('address', e.target.value)}
+                          value={onosh?.['ded_turul_kod']}
+                          onChange={e => {setOnosh({...onosh, ded_turul_kod: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -573,9 +554,8 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Өгөгдөл'
                           placeholder='Өгөгдөл'
-
-                          // value={formData.address}
-                          // onChange={e => handleFormChange('address', e.target.value)}
+                          value={onosh?.['ugugdul']}
+                          onChange={e => {setOnosh({...onosh, ugugdul: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -613,9 +593,8 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Эмчилгээний тоо'
                           placeholder='Эмчилгээний тоо'
-
-                          // value={formData.firstName}
-                          // onChange={e => handleFormChange('firstName', e.target.value)}
+                          value={emchilgee?.['emchilgeenii_too']}
+                          onChange={e => {setEmchilgee({...emchilgee, emchilgeenii_too: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -623,19 +602,17 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Ямар эрхтэнд'
                           placeholder='Ямар эрхтэнд'
-
-                          // value={formData.lastName}
-                          // onChange={e => handleFormChange('lastName', e.target.value)}
+                          value={emchilgee?.['yamar_erhtend']}
+                          onChange={e => {setEmchilgee({...emchilgee, yamar_erhtend: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
                           label='Зай'
-                          // value={formData.email}
                           placeholder='Зай'
-
-                          // onChange={e => handleFormChange('email', e.target.value)}
+                          value={emchilgee?.['zai']}
+                          onChange={e => {setEmchilgee({...emchilgee, zai: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -643,20 +620,17 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Тун'
                           placeholder='Тун'
-
-                          // value={formData.organization}
-                          // onChange={e => handleFormChange('organization', e.target.value)}
+                          value={emchilgee?.['tun']}
+                          onChange={e => {setEmchilgee({...emchilgee, tun: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
                           label='Үргэлжлэх хугацаа'
-                          // value={formData.number}
                           placeholder='Үргэлжлэх хугацаа'
-
-                          // onChange={e => handleFormChange('number', e.target.value)}
-                          // InputProps={{ startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment> }}
+                          value={emchilgee?.['urgeljleh_hugatsaa']}
+                          onChange={e => {setEmchilgee({...emchilgee, urgeljleh_hugatsaa: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -664,9 +638,8 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Талбай'
                           placeholder='Талбай'
-
-                          // value={formData.address}
-                          // onChange={e => handleFormChange('address', e.target.value)}
+                          value={emchilgee?.['talbai']}
+                          onChange={e => {setEmchilgee({...emchilgee, talbai: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -674,9 +647,8 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Давтамж'
                           placeholder='Давтамж'
-
-                          // value={formData.address}
-                          // onChange={e => handleFormChange('address', e.target.value)}
+                          value={emchilgee?.['davtamj']}
+                          onChange={e => {setEmchilgee({...emchilgee, davtamj: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -685,9 +657,8 @@ const CheckoutWizard = () => {
                           type='number'
                           label='Хэдэн удаа'
                           placeholder='Хэдэн удаа'
-
-                          // value={formData.address}
-                          // onChange={e => handleFormChange('address', e.target.value)}
+                          value={emchilgee?.['heden_udaa']}
+                          onChange={e => {setEmchilgee({...emchilgee, heden_udaa: e.target.value})}}
                         />
                       </Grid>
                       <Grid item xs={12}>
