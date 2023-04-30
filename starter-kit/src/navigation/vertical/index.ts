@@ -73,7 +73,7 @@ const navigation = (): VerticalNavItemsType => {
       title: 'Амин үзүүлэлт бүртгэх',
       path: '/nurse/insert',
       icon: 'mdi:clock-outline',
-      role: 'doctor'
+      role: 'nurse'
     },
   ]
 }
