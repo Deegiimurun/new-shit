@@ -70,7 +70,7 @@ const navigation = (): VerticalNavItemsType => {
       role: 'nurse'
     },
     {
-      title: 'Амин үзүүлэлт бүртгэх',
+      title: 'Бүртгэх',
       path: '/nurse/insert',
       icon: 'mdi:clock-outline',
       role: 'nurse'
