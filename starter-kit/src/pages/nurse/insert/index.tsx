@@ -26,17 +26,9 @@ const steps = [
     icon: <Icon width='56px' height='56px' icon='mdi:account-check'/>
   },
   {
-    title: 'Үзлэг',
-    icon: <Icon width='56px' height='56px' icon='mdi:stethoscope'/>
+    title: 'Амин үзүүлэлт',
+    icon: <Icon width='56px' height='56px' icon='mdi:clipboard-pulse-outline'/>
   },
-  {
-    title: 'Онош',
-    icon: <Icon width='56px' height='56px' icon='mdi:file-check-outline'/>
-  },
-  {
-    title: 'Эмчилгээ',
-    icon: <Icon width='56px' height='56px' icon='mdi:pill'/>
-  }
 ]
 
 const Stepper = styled(MuiStepper)<StepperProps>(({theme}) => ({
@@ -97,12 +89,8 @@ const CheckoutWizard = () => {
   const [activeStep, setActiveStep] = useState<number>(0)
   const [client, setClient] = useState<any>()
   const [appointment, setAppointment] = useState<any>()
-  const [uzleg, setUzleg] = useState<any>({})
-  const [onosh, setOnosh] = useState<any>({})
-  const [emchilgee, setEmchilgee] = useState<any>({})
-  const [uzlegLoading, setUzlegLoading] = useState<any>(false)
-  const [onoshLoading, setOnoshLoading] = useState<any>(false)
-  const [emchilgeeLoading, setEmchilgeeLoading] = useState<any>(false)
+  const [aminUzuulelt, setAminUzuulelt] = useState<any>({})
+  const [aminUzuuleltLoading, setAminUzuuleltLoading] = useState<any>(false)
   const router = useRouter();
   const supabase = useSupabaseClient();
 
@@ -168,63 +156,25 @@ const CheckoutWizard = () => {
   useEffect(() => {
     if (!appointment) return;
 
-    const initUzleg = async () => {
-      if (!appointment['uzleg_id']) {
+    const initAminUzuulelt = async () => {
+      if (!appointment['amin_uzuulelt_id']) {
         const {data} = await supabase
-          .from('uzleg')
+          .from('amin_uzuulelt')
           .insert({}).select('*');
         if (!data) return;
-        await supabase.from('tsag_burtgel').update({'uzleg_id': data[0]['id']}).eq('id', appointment['id'])
-        setUzleg(data[0])
+        await supabase.from('tsag_burtgel').update({'amin_uzuulelt_id': data[0]['id']}).eq('id', appointment['id'])
+        setAminUzuulelt(data[0])
       } else {
         const {data} = await supabase
-          .from('uzleg')
+          .from('amin_uzuulelt')
           .select()
-          .eq('id', appointment['uzleg_id']);
+          .eq('id', appointment['amin_uzuulelt_id']);
         if (!data) return;
-        setUzleg(data[0])
+        setAminUzuulelt(data[0])
       }
     }
 
-    const initOnosh = async () => {
-      if (!appointment['onosh_id']) {
-        const {data} = await supabase
-          .from('onosh')
-          .insert({}).select('*');
-        if (!data) return;
-        await supabase.from('tsag_burtgel').update({'onosh_id': data[0]['id']}).eq('id', appointment['id'])
-        setOnosh(data[0])
-      } else {
-        const {data} = await supabase
-          .from('onosh')
-          .select()
-          .eq('id', appointment['onosh_id']);
-        if (!data) return;
-        setOnosh(data[0])
-      }
-    }
-
-    const initEmchilgee = async () => {
-      if (!appointment['emchilgee_id']) {
-        const {data} = await supabase
-          .from('emchilgee')
-          .insert({}).select('*');
-        if (!data) return;
-        await supabase.from('tsag_burtgel').update({'emchilgee_id': data[0]['id']}).eq('id', appointment['id'])
-        setEmchilgee(data[0])
-      } else {
-        const {data} = await supabase
-          .from('emchilgee')
-          .select()
-          .eq('id', appointment['emchilgee_id']);
-        if (!data) return;
-        setEmchilgee(data[0])
-      }
-    }
-
-    initUzleg()
-    initOnosh()
-    initEmchilgee()
+    initAminUzuulelt()
   }, [appointment]);
 
   const getStepContent = (step: number) => {
@@ -329,9 +279,9 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Үзлэг хийгдсэн огноо'
                           placeholder='Үзлэг хийгдсэн огноо'
-                          value={uzleg?.['uzleg_date'] || ''}
+                          value={aminUzuulelt?.['uzleg_date'] || ''}
                           onChange={e => {
-                            setUzleg({...uzleg, uzleg_date: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, uzleg_date: e.target.value})
                           }}
                         />
                       </Grid>
@@ -340,9 +290,9 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Эмчийн үзлэг'
                           placeholder='Эмчийн үзлэг'
-                          value={uzleg?.['emchiin_uzleg'] || ''}
+                          value={aminUzuulelt?.['emchiin_uzleg'] || ''}
                           onChange={e => {
-                            setUzleg({...uzleg, emchiin_uzleg: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, emchiin_uzleg: e.target.value})
                           }}
                         />
                       </Grid>
@@ -350,10 +300,10 @@ const CheckoutWizard = () => {
                         <TextField
                           fullWidth
                           label='Өвчний учир амбулатори'
-                          value={uzleg?.['uvchnii_uchir'] || ''}
+                          value={aminUzuulelt?.['uvchnii_uchir'] || ''}
                           placeholder='Өвчний учир амбулатори'
                           onChange={e => {
-                            setUzleg({...uzleg, uvchnii_uchir: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, uvchnii_uchir: e.target.value})
                           }}
                         />
                       </Grid>
@@ -362,9 +312,9 @@ const CheckoutWizard = () => {
                           <InputLabel>Өвчлөлтэй эсэх</InputLabel>
                           <Select
                             label='Өвчлөлтэй эсэх'
-                            value={uzleg?.['uvchlultei_eseh'] || ''}
+                            value={aminUzuulelt?.['uvchlultei_eseh'] || ''}
                             onChange={e => {
-                              setUzleg({...uzleg, uvchlultei_eseh: e.target.value})
+                              setAminUzuulelt({...aminUzuulelt, uvchlultei_eseh: e.target.value})
                             }}
                           >
                             <MenuItem value='true'>Тийм</MenuItem>
@@ -377,9 +327,9 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Үзлэгийн төрөл'
                           placeholder='Үзлэгийн төрөл'
-                          value={uzleg?.['uzlegiin_turul'] || ''}
+                          value={aminUzuulelt?.['uzlegiin_turul'] || ''}
                           onChange={e => {
-                            setUzleg({...uzleg, uzlegiin_turul: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, uzlegiin_turul: e.target.value})
                           }}
                         />
                       </Grid>
@@ -387,9 +337,9 @@ const CheckoutWizard = () => {
                         <TextField
                           fullWidth
                           label='Үндсэн онош'
-                          value={uzleg?.['undsen_onosh'] || ''}
+                          value={aminUzuulelt?.['undsen_onosh'] || ''}
                           onChange={e => {
-                            setUzleg({...uzleg, undsen_onosh: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, undsen_onosh: e.target.value})
                           }}
                           placeholder='Үндсэн онош'
                         />
@@ -399,9 +349,9 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Өвчний шалтгаан'
                           placeholder='Өвчний шалтгаан'
-                          value={uzleg?.['uvchnii_shaltgaan'] || ''}
+                          value={aminUzuulelt?.['uvchnii_shaltgaan'] || ''}
                           onChange={e => {
-                            setUzleg({...uzleg, uvchnii_shaltgaan: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, uvchnii_shaltgaan: e.target.value})
                           }}
                         />
                       </Grid>
@@ -410,9 +360,9 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Өвчлөл'
                           placeholder='Өвчлөл'
-                          value={uzleg?.['uvchlul'] || ''}
+                          value={aminUzuulelt?.['uvchlul'] || ''}
                           onChange={e => {
-                            setUzleg({...uzleg, uvchlul: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, uvchlul: e.target.value})
                           }}
                         />
                       </Grid>
@@ -421,9 +371,9 @@ const CheckoutWizard = () => {
                           <InputLabel>Дээд шатлалд илгээсэн эсэх</InputLabel>
                           <Select
                             label='Дээд шатлалд илгээсэн эсэх'
-                            value={uzleg?.['deed_shatlal'] || ''}
+                            value={aminUzuulelt?.['deed_shatlal'] || ''}
                             onChange={e => {
-                              setUzleg({...uzleg, deed_shatlal: e.target.value})
+                              setAminUzuulelt({...aminUzuulelt, deed_shatlal: e.target.value})
                             }}
                           >
                             <MenuItem value='true'>Тийм</MenuItem>
@@ -436,9 +386,9 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Хийгдсэн ажилбар'
                           placeholder='Хийгдсэн ажилбар'
-                          value={uzleg?.['hiigdsen_ajilbar'] || ''}
+                          value={aminUzuulelt?.['hiigdsen_ajilbar'] || ''}
                           onChange={e => {
-                            setUzleg({...uzleg, hiigdsen_ajilbar: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, hiigdsen_ajilbar: e.target.value})
                           }}
                         />
                       </Grid>
@@ -447,9 +397,9 @@ const CheckoutWizard = () => {
                           <InputLabel>Хүчирхийлэлд өртсөн эсэх</InputLabel>
                           <Select
                             label='Хүчирхийлэлд өртсөн эсэх'
-                            value={uzleg?.['huchirhiilel'] || ''}
+                            value={aminUzuulelt?.['huchirhiilel'] || ''}
                             onChange={e => {
-                              setUzleg({...uzleg, huchirhiilel: e.target.value})
+                              setAminUzuulelt({...aminUzuulelt, huchirhiilel: e.target.value})
                             }}
                           >
                             <MenuItem value='true'>Тийм</MenuItem>
@@ -463,9 +413,9 @@ const CheckoutWizard = () => {
                           type='text'
                           label='Хөдөлмөр алдалтын хоног'
                           placeholder='Хөдөлмөр алдалтын хоног'
-                          value={uzleg?.['hudulmur_aldalt'] || ''}
+                          value={aminUzuulelt?.['hudulmur_aldalt'] || ''}
                           onChange={e => {
-                            setUzleg({...uzleg, hudulmur_aldalt: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, hudulmur_aldalt: e.target.value})
                           }}
                         />
                       </Grid>
@@ -474,9 +424,9 @@ const CheckoutWizard = () => {
                           <InputLabel>Эргэж холбогдох шаардлагатай эсэх</InputLabel>
                           <Select
                             label='Эргэж холбогдох шаардлагатай эсэх'
-                            value={uzleg?.['ergej_holbogdoh'] || ''}
+                            value={aminUzuulelt?.['ergej_holbogdoh'] || ''}
                             onChange={e => {
-                              setUzleg({...uzleg, ergej_holbogdoh: e.target.value})
+                              setAminUzuulelt({...aminUzuulelt, ergej_holbogdoh: e.target.value})
                             }}
                           >
                             <MenuItem value='true'>Тийм</MenuItem>
@@ -489,240 +439,19 @@ const CheckoutWizard = () => {
                           fullWidth
                           label='Шалтгаан'
                           placeholder='Шалтгаан'
-                          value={uzleg?.['shaltgaan'] || ''}
+                          value={aminUzuulelt?.['shaltgaan'] || ''}
                           onChange={e => {
-                            setUzleg({...uzleg, shaltgaan: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, shaltgaan: e.target.value})
                           }}
                         />
                       </Grid>
                       <Grid item xs={12}>
-                        <LoadingButton loading={uzlegLoading} variant='contained' sx={{mr: 4}}
+                        <LoadingButton loading={aminUzuuleltLoading} variant='contained' sx={{mr: 4}}
                                        onClick={async () => {
-                                         setUzlegLoading(true);
-                                         const a = await supabase.from('uzleg').update(uzleg).eq('id', uzleg.id)
+                                         setAminUzuuleltLoading(true);
+                                         const a = await supabase.from('aminUzuulelt').update(aminUzuulelt).eq('id', aminUzuulelt.id)
                                          console.log(a)
-                                         setUzlegLoading(false);
-                                       }}
-                        >
-                          Хадгалах
-                        </LoadingButton>
-                      </Grid>
-                    </Grid>
-                  </CardContent>
-                </form>
-              </Card>
-            </Grid>
-          </Grid>
-        )
-      case 2:
-        return (
-          <Grid height='100%' container spacing={6}>
-            <Grid item xs={12}>
-              <Card>
-                <form>
-                  <CardContent>
-                    <Grid container spacing={5}>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Ерөнхий төрөл'
-                          placeholder='Ерөнхий төрөл'
-                          value={onosh?.['eronhii_turul'] || ''}
-                          onChange={e => {
-                            setOnosh({...onosh, eronhii_turul: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Ерөнхий төрөл код'
-                          placeholder='Ерөнхий төрөл код'
-                          value={onosh?.['eronhii_turul_kod'] || ''}
-                          onChange={e => {
-                            setOnosh({...onosh, eronhii_turul_kod: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Төрөл'
-                          value={onosh?.['turul'] || ''}
-                          onChange={e => {
-                            setOnosh({...onosh, turul: e.target.value})
-                          }}
-                          placeholder='Төрөл'
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Төрөл код'
-                          placeholder='Төрөл код'
-                          value={onosh?.['turul_kod'] || ''}
-                          onChange={e => {
-                            setOnosh({...onosh, turul_kod: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Дэд төрөл'
-                          value={onosh?.['ded_turul'] || ''}
-                          onChange={e => {
-                            setOnosh({...onosh, ded_turul: e.target.value})
-                          }}
-                          placeholder='Дэд төрөл'
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Дэд төрөл код'
-                          placeholder='Дэд төрөл код'
-                          value={onosh?.['ded_turul_kod'] || ''}
-                          onChange={e => {
-                            setOnosh({...onosh, ded_turul_kod: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Өгөгдөл'
-                          placeholder='Өгөгдөл'
-                          value={onosh?.['ugugdul'] || ''}
-                          onChange={e => {
-                            setOnosh({...onosh, ugugdul: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <LoadingButton loading={onoshLoading} variant='contained' sx={{mr: 4}}
-                                       onClick={async () => {
-                                         setOnoshLoading(true);
-                                         const a = await supabase.from('onosh').update(onosh).eq('id', onosh.id)
-                                         console.log(a)
-                                         setOnoshLoading(false);
-                                       }}
-                        >
-                          Хадгалах
-                        </LoadingButton>
-                      </Grid>
-                    </Grid>
-                  </CardContent>
-                </form>
-              </Card>
-            </Grid>
-          </Grid>
-        )
-      case 3:
-        return (
-          <Grid height='100%' container spacing={6}>
-            {/* Account Details Card */}
-            <Grid item xs={12}>
-              <Card>
-                <form>
-                  <CardContent>
-                    <Grid container spacing={5}>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Эмчилгээний тоо'
-                          placeholder='Эмчилгээний тоо'
-                          value={emchilgee?.['emchilgeenii_too'] || ''}
-                          onChange={e => {
-                            setEmchilgee({...emchilgee, emchilgeenii_too: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Ямар эрхтэнд'
-                          placeholder='Ямар эрхтэнд'
-                          value={emchilgee?.['yamar_erhtend'] || ''}
-                          onChange={e => {
-                            setEmchilgee({...emchilgee, yamar_erhtend: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Зай'
-                          placeholder='Зай'
-                          value={emchilgee?.['zai'] || ''}
-                          onChange={e => {
-                            setEmchilgee({...emchilgee, zai: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Тун'
-                          placeholder='Тун'
-                          value={emchilgee?.['tun'] || ''}
-                          onChange={e => {
-                            setEmchilgee({...emchilgee, tun: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Үргэлжлэх хугацаа'
-                          placeholder='Үргэлжлэх хугацаа'
-                          value={emchilgee?.['urgeljleh_hugatsaa'] || ''}
-                          onChange={e => {
-                            setEmchilgee({...emchilgee, urgeljleh_hugatsaa: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Талбай'
-                          placeholder='Талбай'
-                          value={emchilgee?.['talbai'] || ''}
-                          onChange={e => {
-                            setEmchilgee({...emchilgee, talbai: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Давтамж'
-                          placeholder='Давтамж'
-                          value={emchilgee?.['davtamj'] || ''}
-                          onChange={e => {
-                            setEmchilgee({...emchilgee, davtamj: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          type='text'
-                          label='Хэдэн удаа'
-                          placeholder='Хэдэн удаа'
-                          value={emchilgee?.['heden_udaa'] || ''}
-                          onChange={e => {
-                            setEmchilgee({...emchilgee, heden_udaa: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <LoadingButton loading={emchilgeeLoading} variant='contained' sx={{mr: 4}}
-                                       onClick={async () => {
-                                         setEmchilgeeLoading(true);
-                                         const a = await supabase.from('emchilgee').update(emchilgee).eq('id', emchilgee.id)
-                                         console.log(a)
-                                         setEmchilgeeLoading(false);
+                                         setAminUzuuleltLoading(false);
                                        }}
                         >
                           Хадгалах

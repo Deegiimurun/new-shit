@@ -68,7 +68,13 @@ const navigation = (): VerticalNavItemsType => {
       path: '/nurse/appointment_patient',
       icon: 'mdi:file-document-box',
       role: 'nurse'
-    }
+    },
+    {
+      title: 'Амин үзүүлэлт бүртгэх',
+      path: '/nurse/insert',
+      icon: 'mdi:clock-outline',
+      role: 'doctor'
+    },
   ]
 }
 
