@@ -277,171 +277,179 @@ const CheckoutWizard = () => {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Үзлэг хийгдсэн огноо'
-                          placeholder='Үзлэг хийгдсэн огноо'
-                          value={aminUzuulelt?.['uzleg_date'] || ''}
+                          label='Ухаан санаа'
+                          placeholder='Ухаан санаа'
+                          value={aminUzuulelt?.['uhaan_sanaa'] || ''}
                           onChange={e => {
-                            setAminUzuulelt({...aminUzuulelt, uzleg_date: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, uhaan_sanaa: e.target.value})
                           }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Эмчийн үзлэг'
-                          placeholder='Эмчийн үзлэг'
-                          value={aminUzuulelt?.['emchiin_uzleg'] || ''}
+                          label='Пульс'
+                          placeholder='Пульс'
+                          value={aminUzuulelt?.['pulis'] || ''}
                           onChange={e => {
-                            setAminUzuulelt({...aminUzuulelt, emchiin_uzleg: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, pulis: e.target.value})
                           }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Өвчний учир амбулатори'
-                          value={aminUzuulelt?.['uvchnii_uchir'] || ''}
-                          placeholder='Өвчний учир амбулатори'
+                          label='Амьсгалын тоо'
+                          value={aminUzuulelt?.['amisgaliin_too'] || ''}
+                          placeholder='Амьсгалын тоо'
                           onChange={e => {
-                            setAminUzuulelt({...aminUzuulelt, uvchnii_uchir: e.target.value})
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <FormControl fullWidth>
-                          <InputLabel>Өвчлөлтэй эсэх</InputLabel>
-                          <Select
-                            label='Өвчлөлтэй эсэх'
-                            value={aminUzuulelt?.['uvchlultei_eseh'] || ''}
-                            onChange={e => {
-                              setAminUzuulelt({...aminUzuulelt, uvchlultei_eseh: e.target.value})
-                            }}
-                          >
-                            <MenuItem value='true'>Тийм</MenuItem>
-                            <MenuItem value='false'>Үгүй</MenuItem>
-                          </Select>
-                        </FormControl>
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Үзлэгийн төрөл'
-                          placeholder='Үзлэгийн төрөл'
-                          value={aminUzuulelt?.['uzlegiin_turul'] || ''}
-                          onChange={e => {
-                            setAminUzuulelt({...aminUzuulelt, uzlegiin_turul: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, amisgaliin_too: e.target.value})
                           }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Үндсэн онош'
-                          value={aminUzuulelt?.['undsen_onosh'] || ''}
+                          label='Биеийн температур'
+                          value={aminUzuulelt?.['biyiin_temperature'] || ''}
+                          placeholder='Биеийн температур'
                           onChange={e => {
-                            setAminUzuulelt({...aminUzuulelt, undsen_onosh: e.target.value})
-                          }}
-                          placeholder='Үндсэн онош'
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label='Өвчний шалтгаан'
-                          placeholder='Өвчний шалтгаан'
-                          value={aminUzuulelt?.['uvchnii_shaltgaan'] || ''}
-                          onChange={e => {
-                            setAminUzuulelt({...aminUzuulelt, uvchnii_shaltgaan: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, biyiin_temperature: e.target.value})
                           }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Өвчлөл'
-                          placeholder='Өвчлөл'
-                          value={aminUzuulelt?.['uvchlul'] || ''}
+                          label='Баруун даралт дээд'
+                          placeholder='Баруун даралт дээд'
+                          value={aminUzuulelt?.['baruun_daralt_deed'] || ''}
                           onChange={e => {
-                            setAminUzuulelt({...aminUzuulelt, uvchlul: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, baruun_daralt_deed: e.target.value})
                           }}
                         />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <FormControl fullWidth>
-                          <InputLabel>Дээд шатлалд илгээсэн эсэх</InputLabel>
-                          <Select
-                            label='Дээд шатлалд илгээсэн эсэх'
-                            value={aminUzuulelt?.['deed_shatlal'] || ''}
-                            onChange={e => {
-                              setAminUzuulelt({...aminUzuulelt, deed_shatlal: e.target.value})
-                            }}
-                          >
-                            <MenuItem value='true'>Тийм</MenuItem>
-                            <MenuItem value='false'>Үгүй</MenuItem>
-                          </Select>
-                        </FormControl>
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Хийгдсэн ажилбар'
-                          placeholder='Хийгдсэн ажилбар'
-                          value={aminUzuulelt?.['hiigdsen_ajilbar'] || ''}
+                          label='Баруун даралт доод'
+                          value={aminUzuulelt?.['baruun_daralt_dood'] || ''}
                           onChange={e => {
-                            setAminUzuulelt({...aminUzuulelt, hiigdsen_ajilbar: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, baruun_daralt_dood: e.target.value})
+                          }}
+                          placeholder='Баруун даралт доод'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Баруун даралт дундаж'
+                          placeholder='Баруун даралт дундаж'
+                          value={aminUzuulelt?.['baruun_daralt_dundaj'] || ''}
+                          onChange={e => {
+                            setAminUzuulelt({...aminUzuulelt, baruun_daralt_dundaj: e.target.value})
                           }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <FormControl fullWidth>
-                          <InputLabel>Хүчирхийлэлд өртсөн эсэх</InputLabel>
-                          <Select
-                            label='Хүчирхийлэлд өртсөн эсэх'
-                            value={aminUzuulelt?.['huchirhiilel'] || ''}
-                            onChange={e => {
-                              setAminUzuulelt({...aminUzuulelt, huchirhiilel: e.target.value})
-                            }}
-                          >
-                            <MenuItem value='true'>Тийм</MenuItem>
-                            <MenuItem value='false'>Үгүй</MenuItem>
-                          </Select>
-                        </FormControl>
+                        <TextField
+                          fullWidth
+                          label='Баруун даралт нэмэлт'
+                          placeholder='Баруун даралт нэмэлт'
+                          value={aminUzuulelt?.['baruun_daralt_nemelt'] || ''}
+                          onChange={e => {
+                            setAminUzuulelt({...aminUzuulelt, baruun_daralt_nemelt: e.target.value})
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Зүүн даралт дээд'
+                          placeholder='Зүүн даралт дээд'
+                          value={aminUzuulelt?.['zuun_daralt_deed'] || ''}
+                          onChange={e => {
+                            setAminUzuulelt({...aminUzuulelt, zuun_daralt_deed: e.target.value})
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Зүүн даралт доод'
+                          placeholder='Зүүн даралт доод'
+                          value={aminUzuulelt?.['zuun_daralt_dood'] || ''}
+                          onChange={e => {
+                            setAminUzuulelt({...aminUzuulelt, zuun_daralt_dood: e.target.value})
+                          }}
+                        />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
                           type='text'
-                          label='Хөдөлмөр алдалтын хоног'
-                          placeholder='Хөдөлмөр алдалтын хоног'
-                          value={aminUzuulelt?.['hudulmur_aldalt'] || ''}
+                          label='Зүүн даралт дундаж'
+                          placeholder='Зүүн даралт дунда'
+                          value={aminUzuulelt?.['zuun_daralt_dundaj'] || ''}
                           onChange={e => {
-                            setAminUzuulelt({...aminUzuulelt, hudulmur_aldalt: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, zuun_daralt_dundaj: e.target.value})
                           }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <FormControl fullWidth>
-                          <InputLabel>Эргэж холбогдох шаардлагатай эсэх</InputLabel>
-                          <Select
-                            label='Эргэж холбогдох шаардлагатай эсэх'
-                            value={aminUzuulelt?.['ergej_holbogdoh'] || ''}
-                            onChange={e => {
-                              setAminUzuulelt({...aminUzuulelt, ergej_holbogdoh: e.target.value})
-                            }}
-                          >
-                            <MenuItem value='true'>Тийм</MenuItem>
-                            <MenuItem value='false'>Үгүй</MenuItem>
-                          </Select>
-                        </FormControl>
+                        <TextField
+                          fullWidth
+                          type='text'
+                          label='Зүүн даралт нэмэлт'
+                          placeholder='Зүүн даралт нэмэлт'
+                          value={aminUzuulelt?.['zuun_daralt_nemelt'] || ''}
+                          onChange={e => {
+                            setAminUzuulelt({...aminUzuulelt, zuun_daralt_nemelt: e.target.value})
+                          }}
+                        />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           fullWidth
-                          label='Шалтгаан'
-                          placeholder='Шалтгаан'
-                          value={aminUzuulelt?.['shaltgaan'] || ''}
+                          type='text'
+                          label='Сатураци'
+                          placeholder='Сатураци'
+                          value={aminUzuulelt?.['saturatsi'] || ''}
                           onChange={e => {
-                            setAminUzuulelt({...aminUzuulelt, shaltgaan: e.target.value})
+                            setAminUzuulelt({...aminUzuulelt, saturatsi: e.target.value})
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Өндөр'
+                          placeholder='Өндөр'
+                          value={aminUzuulelt?.['undur'] || ''}
+                          onChange={e => {
+                            setAminUzuulelt({...aminUzuulelt, undur: e.target.value})
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='Жин'
+                          placeholder='Жин'
+                          value={aminUzuulelt?.['jin'] || ''}
+                          onChange={e => {
+                            setAminUzuulelt({...aminUzuulelt, jin: e.target.value})
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          fullWidth
+                          label='БЖИ'
+                          placeholder='БЖИ'
+                          value={aminUzuulelt?.['bji'] || ''}
+                          onChange={e => {
+                            setAminUzuulelt({...aminUzuulelt, bji: e.target.value})
                           }}
                         />
                       </Grid>
