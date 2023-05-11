@@ -57,6 +57,19 @@ const navigation = (): VerticalNavItemsType => {
       icon: 'mdi:clock-outline',
       role: 'nurse'
     },
+
+    {
+      title: 'Тайлан',
+      path: '/doctor/report',
+      icon: 'mdi:clock-outline',
+      role: 'doctor'
+    },
+    {
+      title: 'Тайлан',
+      path: '/nurse/report',
+      icon: 'mdi:clock-outline',
+      role: 'nurse'
+    }
   ]
 }
 

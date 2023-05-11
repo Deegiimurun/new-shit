@@ -42,7 +42,7 @@ const AppCalendar = () => {
   }, [])
 
   const refreshEvents = async () => {
-    const {data} = await supabase.from('tsag_burtgel').select('*')
+    const {data} = await supabase.from('tsag_burtgel').select('*').eq('type', 'uzleg')
     const tempEvents: Array<EventType> = [];
 
     data?.forEach(row => {

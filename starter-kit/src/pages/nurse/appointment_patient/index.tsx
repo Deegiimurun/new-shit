@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box'
-import {Theme} from '@mui/material/styles'
+import { Theme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import {useSettings} from 'src/@core/hooks/useSettings'
+import { useSettings } from 'src/@core/hooks/useSettings'
 import CalendarWrapper from 'src/@core/styles/libs/fullcalendar'
 
 import FullCalendar from '@fullcalendar/react'
@@ -10,14 +10,14 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import listPlugin from '@fullcalendar/list'
 import bootstrap5Plugin from '@fullcalendar/bootstrap5'
-import {useEffect, useState} from "react";
-import {useRouter} from "next/router";
-import {CalendarOptions} from "@fullcalendar/core";
-import {useSupabaseClient} from "@supabase/auth-helpers-react";
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { CalendarOptions } from '@fullcalendar/core'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 const calendarsColor = {
   inprogress: 'warning',
-  finished: 'success',
+  finished: 'success'
 }
 
 type EventType = {
@@ -31,10 +31,9 @@ type EventType = {
   }
 }
 
-
 const Appointment = () => {
   const [events, setEvents] = useState<Array<EventType>>([])
-  const {settings} = useSettings()
+  const { settings } = useSettings()
   const router = useRouter()
 
   useEffect(() => {
@@ -42,22 +41,22 @@ const Appointment = () => {
   }, [])
 
   const refreshEvents = async () => {
-    const {data} = await supabase.from('tsag_burtgel').select('*')
-    const tempEvents: Array<EventType> = [];
+    const { data } = await supabase.from('tsag_burtgel').select('*').eq('type', 'emchilgee')
+    const tempEvents: Array<EventType> = []
 
     data?.forEach(row => {
       const start = new Date(row.date)
-      const end = new Date(row.date);
+      const end = new Date(row.date)
       end.setMinutes(start.getMinutes() + 30)
       let status = ''
       let title = ''
       const className = 'enabled-cell'
 
       if (row['amin_uzuulelt_id']) {
-        status = 'finished';
+        status = 'finished'
         title = 'Бүртгэл хийгдсэн'
       } else {
-        status = 'inprogress';
+        status = 'inprogress'
         title = 'Хүлээгдэж байна'
       }
 
@@ -70,14 +69,14 @@ const Appointment = () => {
         extendedProps: {
           status
         }
-      });
-    });
+      })
+    })
 
-    setEvents(tempEvents);
+    setEvents(tempEvents)
   }
 
-  const supabase = useSupabaseClient();
-  const {skin, direction} = settings
+  const supabase = useSupabaseClient()
+  const { skin, direction } = settings
   const mdAbove = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
 
   const calendarOptions: CalendarOptions = {
@@ -89,19 +88,19 @@ const Appointment = () => {
       end: ''
     },
     allDaySlot: false,
-    slotLabelInterval: "00:30:00",
-    slotLabelFormat: {hour12: false, hour: 'numeric', minute: "numeric"},
+    slotLabelInterval: '00:30:00',
+    slotLabelFormat: { hour12: false, hour: 'numeric', minute: 'numeric' },
     slotMinTime: '10:00:00',
     slotMaxTime: '19:00:00',
     dragScroll: true,
     navLinks: true,
-    eventClassNames({event: calendarEvent}: any) {
+    eventClassNames({ event: calendarEvent }: any) {
       // @ts-ignore
       const colorName = calendarsColor[calendarEvent._def.extendedProps.status]
 
       return [`bg-${colorName} `]
     },
-    eventClick({event: clickedEvent}: any) {
+    eventClick({ event: clickedEvent }: any) {
       router.push(`/nurse/insert?appointment-id=${clickedEvent._def.publicId}`)
     },
 
@@ -115,7 +114,7 @@ const Appointment = () => {
         sx={{
           height: '100%',
           boxShadow: skin === 'bordered' ? 0 : 6,
-          ...(skin === 'bordered' && {border: theme => `1px solid ${theme.palette.divider}`})
+          ...(skin === 'bordered' && { border: theme => `1px solid ${theme.palette.divider}` })
         }}
       >
         <Box
@@ -127,7 +126,7 @@ const Appointment = () => {
             borderRadius: 1,
             boxShadow: 'none',
             backgroundColor: 'background.paper',
-            ...(mdAbove ? {borderTopLeftRadius: 0, borderBottomLeftRadius: 0} : {})
+            ...(mdAbove ? { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 } : {})
           }}
         >
           <FullCalendar height='100%' {...calendarOptions} />
