@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import { DataGrid } from '@mui/x-data-grid'
 import Icon from 'src/@core/components/icon'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
+import {CardHeader, TextField} from "@mui/material";
 
 export type Result = {
   id: number
@@ -68,6 +69,8 @@ const defaultColumns = [
 
 const Report = () => {
   const [clients, setClients] = useState<Array<Result>>([])
+  const [allClients, setAllClients] = useState<Array<Result>>([])
+  const [value, setValue] = useState<string>('')
   const [pageSize, setPageSize] = useState<number>(20)
   const supabase = useSupabaseClient()
 
@@ -106,18 +109,49 @@ const Report = () => {
           }
         }
       }
-      console.log(temp2);
 
       setClients(temp2 as Result[])
+      setAllClients(temp2 as Result[])
     }
 
     initClient()
   }, [])
 
+
+  const handleFilter = (val: string) => {
+    const arr: Array<Result> = [];
+
+    allClients.forEach(value1 => {
+      const a = Object.values(value1);
+
+      for (const element of a) {
+        if (!element) continue;
+        if (element.toString().includes(val)) {
+          arr.push(value1);
+          break;
+        }
+      }
+    })
+
+    setClients(arr)
+    setValue(val)
+  }
+
   return (
     <Grid container spacing={6} height='100%'>
       <Grid item xs={12} height='100%'>
         <Card sx={{ height: '100%' }}>
+          <CardHeader
+            title='Projects'
+            action={
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Typography variant='body2' sx={{ mr: 2 }}>
+                  Search:
+                </Typography>
+                <TextField size='small' value={value} onChange={e => handleFilter(e.target.value)} />
+              </Box>
+            }
+          />
           <DataGrid
             autoPageSize={true}
             pagination
